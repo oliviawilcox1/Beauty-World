@@ -13,7 +13,7 @@
 6. Lastly, there will be a category nav-bar that will allow the user to search for specific items by category.
 
 
-Technologies Used: React
+Technologies Used: React, Bootstrap, JavaScript
 
 MVP: Full CRUD 
 
