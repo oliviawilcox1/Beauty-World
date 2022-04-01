@@ -20,7 +20,7 @@ MVP: Full CRUD
 Stretch Goals: Sort by Price 
 
 Link to the API-matching GitHub:
-[333-api]()
+[333-api](https://github.com/oliviawilcox1/333-api)
 
 WireFrames
 ![start](img/Favorites.png)
