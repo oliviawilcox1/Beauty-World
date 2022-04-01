@@ -28,7 +28,7 @@ WireFrames
 ![start](img/Show.png)
 
 ERD
-![start](img/ERD.png)
+![start](img/ERD1.png)
 
 
 
