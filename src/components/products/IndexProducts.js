@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { getAllProducts } from '../../api/products'
 import { Card } from "react-bootstrap"
 
-// const cardContainerLayout = {
-//     display: 'flex',
-//     justifyContent: 'center',
-//     flexFlow: 'row wrap'
-// }
+const cardContainerLayout = {
+    display: 'flex',
+    justifyContent: 'center',
+    flexFlow: 'row wrap',
+}
 
 const IndexProducts = (props) => {
         const [products, setProducts] = useState(null)
@@ -69,8 +69,10 @@ const IndexProducts = (props) => {
 
         if (products.length > 0) {
             productCards = products.map(product => (
-                <div key={product.id}>
-                    <h1>{product.name}</h1>
+                <div key={product.id} style={{ width:'300px'}}>
+                    <h5 style={{overflowWrap: 'break-word'}}>{product.name}</h5>
+                    <img src={`${product.image}`} style={{ height: '200px'}} class='img-thumbnail' />
+                    <p>$ {product.price}</p>
                 </div>
             ))
         }
@@ -79,8 +81,7 @@ const IndexProducts = (props) => {
             <>
                 <h3>All The Products</h3>
                 {/* using an inline style with an object declared above */}
-                
-                <div>
+                <div style={cardContainerLayout}>
                     {productCards}
                 </div>
                
