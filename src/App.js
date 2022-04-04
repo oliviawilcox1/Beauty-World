@@ -13,6 +13,10 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 
+// import CreateProduct from './components/products/CreateProduct'
+// import ShowProduct from './components/products/ShowProduct'
+
+
 const App = () => {
 
   const [user, setUser] = useState(null)
