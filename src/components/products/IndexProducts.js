@@ -30,7 +30,7 @@ const IndexProducts = (props) => {
                         // message: indexPetsFailure,
                         variant: 'danger'
                     }))
-            },[msgAlert])
+            },[])
 
 
         // let productCards
@@ -59,12 +59,30 @@ const IndexProducts = (props) => {
         //         </Card>
         //     ))
         // }
+        if (!products) {
+            return <p>loading...</p>
+        } else if (products.length === 0) {
+            return <p>no pets yet, go add some</p>
+        }
+
+        let productCards
+
+        if (products.length > 0) {
+            productCards = products.map(product => (
+                <div key={product.id}>
+                    <h1>{product.name}</h1>
+                </div>
+            ))
+        }
+
         return(
             <>
                 <h3>All The Products</h3>
                 {/* using an inline style with an object declared above */}
                 
-                    {products[0].name}
+                <div>
+                    {productCards}
+                </div>
                
             </>
         )
