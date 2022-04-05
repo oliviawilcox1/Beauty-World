@@ -31,7 +31,7 @@ const IndexProducts = (props) => {
                         // message: indexPetsFailure,
                         variant: 'danger'
                     }))
-            },[products])
+            },[])
 
 
         // let productCards
