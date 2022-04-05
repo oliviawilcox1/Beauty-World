@@ -5,7 +5,7 @@ import {
   removeProduct,
 } from '../../api/products';
 import { useParams, useNavigate } from 'react-router-dom';
-//import EditProductModel from './EditProductModal';
+import EditProductModal from './EditProductModal';
 
 const cardContainerLayout = {
   display: 'flex',
@@ -32,7 +32,7 @@ const ShowProduct = (props) => {
       })
       .catch(() => {
         msgAlert({
-          heading: 'No product fount',
+          heading: 'No product found',
           variant: 'danger',
         });
       });
@@ -79,7 +79,16 @@ const ShowProduct = (props) => {
       <p>Category: {product.category}</p>
       <small>Available: {product.available ? 'yes' : 'no'}</small>
       <button onClick={() => removeTheProduct()}>Delete Product</button>
-      {/* <button onClick={() => updateProduct()}>Edit Product</button> */}
+      <button onClick={() => setModalOpen(true)}>Edit Product</button>
+      <EditProductModal
+        product={product}
+        show={modalOpen}
+        user={user}
+        msgAlert={msgAlert}
+        triggerRefresh={() => setUpdated((prev) => !prev)}
+        updateProduct={updateProduct}
+        handleClose={() => setModalOpen(false)}
+      />
     </>
   );
 };
