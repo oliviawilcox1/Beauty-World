@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getAllProducts } from '../../api/products'
 import { Card } from "react-bootstrap"
+import { Link } from 'react-router-dom'
 
 const cardContainerLayout = {
     display: 'flex',
@@ -10,7 +11,7 @@ const cardContainerLayout = {
 
 const IndexProducts = (props) => {
         const [products, setProducts] = useState(null)
-        const { msgAlert } = props
+        const { user, msgAlert } = props
         useEffect(()=> {
             getAllProducts()
                 .then(res => {
@@ -70,7 +71,7 @@ const IndexProducts = (props) => {
         if (products.length > 0) {
             productCards = products.map(product => (
                 <div key={product.id} style={{ width:'300px'}}>
-                    <h5 style={{overflowWrap: 'break-word'}}>{product.name}</h5>
+                    <Link to={`/products/${product._id}`} style={{overflowWrap: 'break-word'}} >{product.name}</Link>
                     <img src={`${product.image}`} style={{ height: '200px'}} class='img-thumbnail' />
                     <p>$ {product.price}</p>
                 </div>
@@ -91,3 +92,5 @@ const IndexProducts = (props) => {
 }
 
 export default IndexProducts
+
+// wonder woman
