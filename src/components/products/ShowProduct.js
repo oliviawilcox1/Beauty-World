@@ -18,7 +18,6 @@ const ShowProduct = (props) => {
     console.log('id in showProduct', id)
     useEffect(() => {
         getOneProduct(id)
-        console.log('id in showProduct', id)
             .then(res => setProduct(res.data.product))
             .then(() => {
                 msgAlert({
@@ -68,10 +67,10 @@ const ShowProduct = (props) => {
                 Available: {product.available ? 'yes' : 'no'}
             </small> 
             <div>
-                <p onClick={() => setModal(true)}>
+                {/* <p onClick={() => setModal(true)}>
                     Edit Pet
-                </p>
-                <p onClick={() => removeThePet()}>
+                </p> */}
+                <p onClick={() => removeTheProduct()}>
                     Delete Product
                 </p>
             </div>
