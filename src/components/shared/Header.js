@@ -10,7 +10,7 @@ const authenticatedOptions = (
   <>
     <Nav.Item className="m-2">
       <Link to="addProduct" style={linkStyle}>
-        Add New Product
+        Add Product
       </Link>
     </Nav.Item>
     <Nav.Item>

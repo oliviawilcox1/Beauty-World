@@ -60,7 +60,7 @@ const CreateProduct = (props) => {
     createProduct(user, product)
       // if create is successful, we should navigate to the show page
       .then((res) => {
-        navigate(`/products/${res.data.product.id}`);
+        navigate(`/products/${res.data.product._id}`);
       })
       // then we send a success message
       .then(() =>
