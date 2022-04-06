@@ -65,8 +65,8 @@ const ShowReview = (props) => {
             </Card>
             <EditToyModal 
                 user={user}
-                pet={product}
-                toy={review}
+                productt={product}
+                review={review}
                 show={showEditModal}
                 handleClose={() => setShowEditModal(false)}
                 msgAlert={msgAlert}
