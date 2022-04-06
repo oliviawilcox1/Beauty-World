@@ -65,64 +65,72 @@ const ShowProduct = (props) => {
   if (!product) {
     return <span>Loading...</span>;
   }
+  // console.log('USER', user)
+  // console.log('PRODUCT', product)
 
-  // check to see if there is a user signed in and if the product has an owner
-  if(user != null && product.owner._id != null){
-    // check to see if the user id matches the product owner's ID & display conditional 'edit' and 'delete' buttons
-    if (user._id === product.owner._id){
-      return (
-        <>
-          <h1>{product.name}</h1>
-          <img
-            src={`${product.image}`}
-            alt=""
-            style={{ height: '200px' }}
-            class="img-thumbnail"
-          />
-          <p>Description: {product.description}</p>
-          <p>Price: {product.price}</p>
-          <p>Category: {product.category}</p>
-          <small>Available: {product.available ? 'yes' : 'no'}</small>
-          <button onClick={() => removeTheProduct()}>Delete Product</button>
-          <button onClick={() => setModalOpen(true)}>Edit Product</button>
-          <EditProductModal
-            product={product}
-            show={modalOpen}
-            user={user}
-            msgAlert={msgAlert}
-            triggerRefresh={() => setUpdated((prev) => !prev)}
-            updateProduct={updateProduct}
-            handleClose={() => setModalOpen(false)}
-          />
-        </>
-      )
-    }
+  try{
+            // check to see if there is a user signed in and if the product has an owner
+            if(user && product.owner._id){
+              // check to see if the user id matches the product owner's ID & display conditional 'edit' and 'delete' buttons
+              if (user._id === product.owner._id){
+                return (
+                  <>
+                    <h1>{product.name}</h1>
+                    <img
+                      src={`${product.image}`}
+                      alt=""
+                      style={{ height: '200px' }}
+                      class="img-thumbnail"
+                    />
+                    <p>Description: {product.description}</p>
+                    <p>Price: {product.price}</p>
+                    <p>Category: {product.category}</p>
+                    <small>Available: {product.available ? 'yes' : 'no'}</small>
+                    <button onClick={() => removeTheProduct()}>Delete Product</button>
+                    <button onClick={() => setModalOpen(true)}>Edit Product</button>
+                    <EditProductModal
+                      product={product}
+                      show={modalOpen}
+                      user={user}
+                      msgAlert={msgAlert}
+                      triggerRefresh={() => setUpdated((prev) => !prev)}
+                      updateProduct={updateProduct}
+                      handleClose={() => setModalOpen(false)}
+                    />
+                  </>
+                )
+              }
+            }
+  } catch(error){
+    console.log('ERROR:', error)
   }
+    return (
+      <>
+        <h1>{product.name}</h1>
+        <img
+          src={`${product.image}`}
+          alt=""
+          style={{ height: '200px' }}
+          class="img-thumbnail"
+        />
+        <p>Description: {product.description}</p>
+        <p>Price: {product.price}</p>
+        <p>Category: {product.category}</p>
+        <small>Available: {product.available ? 'yes' : 'no'}</small>
+        <EditProductModal
+          product={product}
+          show={modalOpen}
+          user={user}
+          msgAlert={msgAlert}
+          triggerRefresh={() => setUpdated((prev) => !prev)}
+          updateProduct={updateProduct}
+          handleClose={() => setModalOpen(false)}
+        />
+      </>
+    );
+  };
 
-  return (
-    <>
-      <h1>{product.name}</h1>
-      <img
-        src={`${product.image}`}
-        alt=""
-        style={{ height: '200px' }}
-        class="img-thumbnail"
-      />
-      <p>Description: {product.description}</p>
-      <p>Price: {product.price}</p>
-      <p>Category: {product.category}</p>
-      <small>Available: {product.available ? 'yes' : 'no'}</small>
-      <EditProductModal
-        product={product}
-        show={modalOpen}
-        user={user}
-        msgAlert={msgAlert}
-        triggerRefresh={() => setUpdated((prev) => !prev)}
-        updateProduct={updateProduct}
-        handleClose={() => setModalOpen(false)}
-      />
-    </>
-  );
-};
+
+
 
 export default ShowProduct;
