@@ -4,7 +4,7 @@ import {
   updateProduct,
   removeProduct,
 } from '../../api/products';
-import { createFavorite } from '../../api/favorites';
+import { createFavorite, getAllFavorites } from '../../api/favorites';
 import { useParams, useNavigate } from 'react-router-dom';
 import EditProductModal from './EditProductModal';
 
@@ -18,6 +18,8 @@ const ShowProduct = (props) => {
   const [product, setProduct] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [updated, setUpdated] = useState(false);
+  let hidden
+  // const [favoriteArray, setFavoriteArray]  = useState([])
   const { user, msgAlert } = props;
   const { id } = useParams();
   const navigate = useNavigate();
@@ -38,6 +40,27 @@ const ShowProduct = (props) => {
         });
       });
   }, [updated]);
+  
+  const isFavorite = () => {
+    let faveArray = []
+    getAllFavorites()
+      .then(res => {
+          console.log('this is the favoritesArray', res.data.favorites)
+          // setFavoriteArray(res.data.favorites)
+          faveArray = res.data.favorites
+          return faveArray
+        })
+      .then(faveArray => {
+        for( const i in faveArray ) {
+          console.log('favorite product id', faveArray[i].product._id)
+          console.log('Show product id', id)
+          if ((faveArray[i].product._id) === id) {
+            console.log('Do not display favorite button')
+            return hidden = 'hidden'
+          } 
+        } return hidden = 'display'
+      })  
+  }
 
   const removeTheProduct = () => {
     removeProduct(user, product._id)
@@ -95,6 +118,17 @@ const ShowProduct = (props) => {
   // console.log('USER', user)
   // console.log('PRODUCT', product)
 
+  // let hidden
+  console.log(isFavorite())
+  // if (isFavorite()) {
+  //   console.log('button should be hidden')
+  //   hidden = 'none'
+  // } else {
+  //   console.log('Favorite should be visible')
+  //   hidden = 'visible'
+  // }
+
+
 
   try{
             // check to see if there is a user signed in and if the product has an owner
@@ -116,7 +150,7 @@ const ShowProduct = (props) => {
                     <small>Available: {product.available ? 'yes' : 'no'}</small>
                     <button onClick={() => removeTheProduct()}>Delete Product</button>
                     <button onClick={() => setModalOpen(true)}>Edit Product</button>
-                    <button onClick={() => addFavorite()}>Add to Favorites</button>  
+                    <button style={{visibility: hidden}} onClick={() => addFavorite()}>Add to Favorites</button>  
                     <EditProductModal
                       product={product}
                       show={modalOpen}
@@ -133,6 +167,7 @@ const ShowProduct = (props) => {
   } catch(error){
     console.log('ERROR:', error)
   }
+
   if(user){
     return (
       <>
@@ -147,7 +182,7 @@ const ShowProduct = (props) => {
         <p>Price: {product.price}</p>
         <p>Category: {product.category}</p>
         <small>Available: {product.available ? 'yes' : 'no'}</small>
-        <button onClick={() => addFavorite()}>Add to Favorites</button>  
+        <button style={{visibility: hidden}} onClick={() => addFavorite()}>Add to Favorites</button>  
         <EditProductModal
           product={product}
           show={modalOpen}
