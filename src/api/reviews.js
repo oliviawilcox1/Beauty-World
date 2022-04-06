@@ -1,40 +1,39 @@
-import apiUrl from '../apiConfig'
-import axios from 'axios'
-
+import apiUrl from '../apiConfig';
+import axios from 'axios';
 
 // POST -> create function
-export const giveToy = (user, petId, newToy) => {
-    console.log('user', user)
-    console.log('this is newPet', newToy)
-    return axios({
-        url: `${apiUrl}/toys/${petId}`,
-        method: 'POST',
-        data: { toy: newToy }
-    })
-}
+export const createReview = (user, productId, newReview) => {
+  console.log('user', user);
+  console.log('this is newProduct', newReview);
+  return axios({
+    url: `${apiUrl}/reviews/${productId}`,
+    method: 'POST',
+    data: { review: newReview },
+  });
+};
 
 // PATCH -> update function
-export const updateToy = (user, petId, toyId, updatedToy) => {
-    console.log('user', user)
-    console.log('this is newPet', updatedToy)
-    return axios({
-        url: `${apiUrl}/toys/${petId}/${toyId}`,
-        method: 'PATCH',
-        headers: {
-            Authorization: `Token token=${user.token}`
-        },
-        data: { toy: updatedToy }
-    })
-}
+export const updateReview = (user, productId, reviewId, updatedReview) => {
+  console.log('user', user);
+  console.log('this is newProduct', updatedReview);
+  return axios({
+    url: `${apiUrl}/reviews/${productId}/${reviewId}`,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Token token=${user.token}`,
+    },
+    data: { review: updatedReview },
+  });
+};
 
 // DELETE -> remove function
-export const removeToy = (user, petId, toyId) => {
-    console.log('user', user)
-    return axios({
-        url: `${apiUrl}/toys/${petId}/${toyId}`,
-        method: 'DELETE',
-        headers: {
-            Authorization: `Token token=${user.token}`
-        }
-    })
-}
+export const deleteReview = (user, productId, reviewId) => {
+  console.log('user', user);
+  return axios({
+    url: `${apiUrl}/reviews/${productId}/${reviewId}`,
+    method: 'DELETE',
+    headers: {
+      Authorization: `Token token=${user.token}`,
+    },
+  });
+};
