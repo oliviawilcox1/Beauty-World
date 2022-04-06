@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
-import ReviewForm from '../shared/ToyForm';
+import ReviewForm from '../shared/ReviewForm';
 import { updateReview } from '../../api/reviews.js';
 
 const EditReviewModal = (props) => {
