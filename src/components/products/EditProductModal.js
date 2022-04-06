@@ -20,6 +20,7 @@ const EditProductModal = (props) => {
       if (e.target.type === 'number') {
         value = parseInt(e.target.value);
       }
+      
 
       const updatedValue = { [key]: value };
 

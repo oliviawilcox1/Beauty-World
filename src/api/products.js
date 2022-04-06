@@ -27,7 +27,7 @@ export const updateProduct = (user, updatedProduct) => {
     console.log('user', user)
     console.log('this is newProduct', updatedProduct)
     return axios({
-        url: `${apiUrl}/products/${updatedProduct.id}`,
+        url: `${apiUrl}/products/${updatedProduct._id}`,
         method: 'PATCH',
         headers: {
             Authorization: `Token token=${user.token}`
