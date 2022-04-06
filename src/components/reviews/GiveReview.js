@@ -1,26 +1,26 @@
 import React, { useState } from 'react'
 import {Modal} from 'react-bootstrap'
-import ToyForm from '../shared/ToyForm'
-import {giveToy} from '../../api/toys.js'
+import ReviewForm from '../shared/ReviewForm'
+import { giveReview } from '../../api/reviews.js'
 
-const GiveToyModal = (props) => {
-    const { user, pet, show, handleClose, msgAlert, triggerRefresh } = props
-    const [toy, setToy] = useState({})
+const GiveReviewModal = (props) => {
+    const { user, product, show, handleClose, msgAlert, triggerRefresh } = props
+    const [review, setReview] = useState({})
 
     const handleChange = (e) => {
         // e === event
         e.persist()
 
-        setToy(prevToy => {
+        setReview(prevReview => {
             const name = e.target.name
             let value = e.target.value
             console.log('etarget type', e.target.type)
             console.log('this is e.target checked', e.target.checked)
-            if(name === "isSqueaky" && e.target.checked){
-                value = true
-            } else if (name === "isSqueaky" && !e.target.checked){
-                value = false
-            }
+            // if(name === "isSqueaky" && e.target.checked){
+            //     value = true
+            // } else if (name === "isSqueaky" && !e.target.checked){
+            //     value = false
+            // }
 
             if (e.target.type === 'number') {
                 value = parseInt(e.target.value)
@@ -28,10 +28,10 @@ const GiveToyModal = (props) => {
 
             const updatedValue = { [name]: value }
 
-            console.log('prevToy', prevToy)
+            console.log('prevReview', prevReview)
             console.log('updatedValue', updatedValue)
 
-            return {...prevToy, ...updatedValue}
+            return {...prevReview, ...updatedValue}
         })
     }
 
@@ -39,8 +39,8 @@ const GiveToyModal = (props) => {
         // e === event
         e.preventDefault()
 
-        console.log('the toy to submit', toy)
-        giveToy(user, pet.id, toy)
+        console.log('the toy to submit', review)
+        giveReview(user, product.id, review)
             // if create is successful, we should navigate to the show page
             .then(() => handleClose())
             // then we send a success message
@@ -64,15 +64,15 @@ const GiveToyModal = (props) => {
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton></Modal.Header>
             <Modal.Body>
-                <ToyForm
-                    toy={toy}
+                <ReviewForm
+                    review={review}
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
-                    heading="Give pet a toy!"
+                    heading="Give the product a review!"
                 />
             </Modal.Body>
         </Modal>
     )
 }
 
-export default GiveToyModal
+export default GiveReviewModal

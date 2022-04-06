@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
-import EditReview from './EditReview'
-import { removeReview } from '../../api/reviews'
+import EditReviewModal from './EditReview'
+import { removeReview } from '../../api/reviews.js'
 
-const ShowReview = (props) => {
+const ShowReviewModal = (props) => {
     // most of these are simply to pass to edit modal
     const {review, product, user, triggerRefresh, msgAlert} = props
 
@@ -63,7 +63,7 @@ const ShowReview = (props) => {
                     }
                 </Card.Body>
             </Card>
-            <EditToyModal 
+            <EditReviewModal 
                 user={user}
                 productt={product}
                 review={review}
@@ -76,4 +76,4 @@ const ShowReview = (props) => {
     )
 }
 
-export default ShowReview
+export default ShowReviewModal
