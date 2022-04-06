@@ -4,6 +4,7 @@ import {
   updateProduct,
   removeProduct,
 } from '../../api/products';
+import { createFavorite } from '../../api/favorites';
 import { useParams, useNavigate } from 'react-router-dom';
 import EditProductModal from './EditProductModal';
 
@@ -59,6 +60,32 @@ const ShowProduct = (props) => {
       });
   };
 
+  const addFavorite = () => {
+    const favorite = {
+        owner: user._id,
+        product: product._id
+    }
+    console.log('FAVORITE: ', favorite)
+      createFavorite(user, favorite)
+        .then(() => {
+          msgAlert({
+            heading: 'Favorite',
+            message: "Added to Favorites!",
+            variant: 'success',
+          });
+        })
+        .then(() => {
+          navigate(`/products/${product._id}`);
+        })
+      .catch(() => {
+        msgAlert({
+          heading: 'something went wrong',
+          message: 'that aint it',
+          variant: 'danger',
+        });
+      }); 
+  }
+
  
   //let reviews
 
@@ -89,6 +116,7 @@ const ShowProduct = (props) => {
                     <small>Available: {product.available ? 'yes' : 'no'}</small>
                     <button onClick={() => removeTheProduct()}>Delete Product</button>
                     <button onClick={() => setModalOpen(true)}>Edit Product</button>
+                    <button onClick={() => addFavorite()}>Add to Favorites</button>  
                     <EditProductModal
                       product={product}
                       show={modalOpen}
@@ -105,6 +133,39 @@ const ShowProduct = (props) => {
   } catch(error){
     console.log('ERROR:', error)
   }
+  if(user){
+    return (
+      <>
+        <h1>{product.name}</h1>
+        <img
+          src={`${product.image}`}
+          alt=""
+          style={{ height: '200px' }}
+          class="img-thumbnail"
+        />
+        <p>Description: {product.description}</p>
+        <p>Price: {product.price}</p>
+        <p>Category: {product.category}</p>
+        <small>Available: {product.available ? 'yes' : 'no'}</small>
+        <button onClick={() => addFavorite()}>Add to Favorites</button>  
+        <EditProductModal
+          product={product}
+          show={modalOpen}
+          user={user}
+          msgAlert={msgAlert}
+          triggerRefresh={() => setUpdated((prev) => !prev)}
+          updateProduct={updateProduct}
+          handleClose={() => setModalOpen(false)}
+        />
+      </>
+    )
+
+  }
+
+
+
+
+
     return (
       <>
         <h1>{product.name}</h1>

@@ -18,7 +18,6 @@ export const createFavorite = (user, newFavorite) => {
 }
 
 
-
 // DELETE -> remove function
 export const removeFavorite = (user, favoriteId) => {
     console.log('user', user)

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import ReviewForm from '../shared/ToyForm';
@@ -7,9 +8,11 @@ const EditReviewModal = (props) => {
   const { user, product, show, handleClose, msgAlert, triggerRefresh } = props;
   const [review, setReview] = useState(props.review);
 
-  const handleChange = (e) => {
-    // e === event
-    e.persist();
+
+    const handleChange = (e) => {
+        // e === event
+        e.persist()
+
 
     setReview((prevReview) => {
       const name = e.target.name;
@@ -17,11 +20,13 @@ const EditReviewModal = (props) => {
       console.log('etarget type', e.target.type);
       console.log('this is e.target checked', e.target.checked);
 
-      if (e.target.type === 'number') {
-        value = parseInt(e.target.value);
-      }
 
-      const updatedValue = { [name]: value };
+            if (e.target.type === 'number') {
+                value = parseInt(e.target.value)
+            }
+
+            const updatedValue = { [name]: value }
+
 
       console.log('prevReview', prevReview);
       console.log('updatedValue', updatedValue);
@@ -30,9 +35,11 @@ const EditReviewModal = (props) => {
     });
   };
 
-  const handleSubmit = (e) => {
-    // e === event
-    e.preventDefault();
+
+    const handleSubmit = (e) => {
+        // e === event
+        e.preventDefault()
+
 
     console.log('the review to submit', review);
     updateReview(user, product.id, review._id, review)
