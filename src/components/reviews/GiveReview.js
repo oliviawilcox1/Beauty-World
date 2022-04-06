@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import {Modal} from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 import ReviewForm from '../shared/ReviewForm'
-import { giveReview } from '../../api/reviews.js'
+import { createReview } from '../../api/reviews.js'
 
-const GiveReviewModal = (props) => {
+const CreateReviewModal = (props) => {
     const { user, product, show, handleClose, msgAlert, triggerRefresh } = props
     const [review, setReview] = useState({})
 
@@ -40,7 +40,7 @@ const GiveReviewModal = (props) => {
         e.preventDefault()
 
         console.log('the toy to submit', review)
-        giveReview(user, product.id, review)
+        createReview(user, product.id, review)
             // if create is successful, we should navigate to the show page
             .then(() => handleClose())
             // then we send a success message
@@ -75,4 +75,4 @@ const GiveReviewModal = (props) => {
     )
 }
 
-export default GiveReviewModal
+export default CreateReviewModal

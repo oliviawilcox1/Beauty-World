@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import EditReviewModal from './EditReview'
-import { removeReview } from '../../api/reviews.js'
+import { deleteReview } from '../../api/reviews.js'
 
 const ShowReviewModal = (props) => {
     // most of these are simply to pass to edit modal
@@ -20,7 +20,7 @@ const ShowReviewModal = (props) => {
     // }
 
     const destroyReview = () => {
-        removeReview(user, product._id, review._id)
+        deleteReview(user, product._id, review._id)
             .then(() =>
                 msgAlert({
                     heading: 'Review Added!',
@@ -65,7 +65,7 @@ const ShowReviewModal = (props) => {
             </Card>
             <EditReviewModal 
                 user={user}
-                productt={product}
+                product={product}
                 review={review}
                 show={showEditModal}
                 handleClose={() => setShowEditModal(false)}
