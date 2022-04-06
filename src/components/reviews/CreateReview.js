@@ -15,12 +15,6 @@ const CreateReviewModal = (props) => {
             const name = e.target.name
             let value = e.target.value
             console.log('etarget type', e.target.type)
-            // console.log('this is e.target checked', e.target.checked)
-            // if(name === "isSqueaky" && e.target.checked){
-            //     value = true
-            // } else if (name === "isSqueaky" && !e.target.checked){
-            //     value = false
-            // }
 
             if (e.target.type === 'number') {
                 value = parseInt(e.target.value)
@@ -39,15 +33,15 @@ const CreateReviewModal = (props) => {
         // e === event
         e.preventDefault()
 
-        console.log('the toy to submit', review)
+        console.log('the review to submit', review)
         createReview(user, product._id, review)
             // if create is successful, we should navigate to the show page
             .then(() => handleClose())
             // then we send a success message
             .then(() =>
                 msgAlert({
-                    heading: 'Toy given to pet!',
-                    message: 'great! the pet loves it!',
+                    heading: 'Review Created',
+                    message: 'Thank you for your feedback!',
                     variant: 'success',
                 }))
             .then(() => triggerRefresh())
@@ -55,7 +49,7 @@ const CreateReviewModal = (props) => {
             .catch(() =>
                 msgAlert({
                     heading: 'Oh No!',
-                    message: 'that aint it',
+                    message: 'Please try again.',
                     variant: 'danger',
                 }))
     }

@@ -25,7 +25,7 @@ const ShowProduct = (props) => {
   const { user, msgAlert } = props;
   const { id } = useParams();
   const navigate = useNavigate();
-  console.log('id in showProduct', id);
+  // console.log('id in showProduct', product._id);
   useEffect(() => {
     getOneProduct(id)
       .then((res) => setProduct(res.data.product))

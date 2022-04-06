@@ -23,8 +23,8 @@ const ShowReviewModal = (props) => {
         deleteReview(user, product._id, review._id)
             .then(() =>
                 msgAlert({
-                    heading: 'Review Added!',
-                    message: 'Thank you for your input',
+                    heading: 'Review Deleted!',
+                    message: 'Thank you for your input.',
                     variant: 'success',
                 }))
             .then(() => triggerRefresh())
@@ -32,7 +32,7 @@ const ShowReviewModal = (props) => {
             .catch(() =>
                 msgAlert({
                     heading: 'Oh No!',
-                    message: 'that aint it',
+                    message: 'Please try again.',
                     variant: 'danger',
             }))
     }

@@ -9,16 +9,16 @@ const ReviewForm = (props) => {
         <Container className="justify-content-center">
             <h3>{heading}</h3>
             <Form onSubmit={handleSubmit}>
-                <Form.Label>Review</Form.Label>
+                <Form.Label>Description</Form.Label>
                 <Form.Control 
-                    placeholder="what is the toy's name?"
+                    placeholder="Enter your review!"
                     value={review.review}
                     name='review'
                     onChange={handleChange}
                 />
                 <Form.Label>Rating</Form.Label>
                 <Form.Control 
-                    placeholder="what kind of toy is it?"
+                    placeholder="Rate from 0-5"
                     value={review.rating}
                     name='rating'
                     onChange={handleChange}

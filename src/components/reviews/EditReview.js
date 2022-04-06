@@ -49,7 +49,7 @@ const EditReviewModal = (props) => {
       .then(() =>
         msgAlert({
           heading: 'Review updated!',
-          message: 'great work',
+          message: 'Thank you for your update.',
           variant: 'success',
         })
       )
@@ -58,7 +58,7 @@ const EditReviewModal = (props) => {
       .catch(() =>
         msgAlert({
           heading: 'Oh No!',
-          message: 'that aint it',
+          message: 'Please try again later.',
           variant: 'danger',
         })
       );
@@ -72,7 +72,7 @@ const EditReviewModal = (props) => {
           review={review}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          heading="Give product a review!"
+          heading="Give a product a review!"
         />
       </Modal.Body>
     </Modal>
