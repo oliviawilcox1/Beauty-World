@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import EditToyModal from './EditToyModal'
-import { removeToy } from '../../api/toys'
+import { removeReview } from '../../api/reviews'
 
-const ShowToy = (props) => {
+const ShowReview = (props) => {
     // most of these are simply to pass to edit modal
-    const {toy, pet, user, triggerRefresh, msgAlert} = props
+    const {review, product, user, triggerRefresh, msgAlert} = props
 
     const [showEditModal, setShowEditModal] = useState(false)
 
@@ -19,12 +19,12 @@ const ShowToy = (props) => {
         }
     }
 
-    const destroyToy = () => {
-        removeToy(user, pet._id, toy._id)
+    const destroyReview = () => {
+        removeReview(user, product._id, review._id)
             .then(() =>
                 msgAlert({
-                    heading: 'Toy updated!',
-                    message: 'great! the pet loves it!',
+                    heading: 'Review Added!',
+                    message: 'Thank you for your input',
                     variant: 'success',
                 }))
             .then(() => triggerRefresh())
@@ -36,6 +36,8 @@ const ShowToy = (props) => {
                     variant: 'danger',
             }))
     }
+
+    // still working on this
 
     console.log(setBgCondition(toy.condition))
     
@@ -80,4 +82,4 @@ const ShowToy = (props) => {
     )
 }
 
-export default ShowToy
+export default ShowReview
