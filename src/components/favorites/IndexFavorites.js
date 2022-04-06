@@ -11,6 +11,7 @@ const cardContainerLayout = {
 
 const IndexFavorites = (props) => {
         const [favorites, setfavorites] = useState(null)
+        const [updated, setUpdated] = useState(false)
         const { user, msgAlert } = props
         const navigate = useNavigate()
         useEffect(()=> {
@@ -30,7 +31,7 @@ const IndexFavorites = (props) => {
                         heading:"Uh Oh, something went wrong finding your favorites..",
                         variant: 'danger'
                     }))
-            },[])
+            },[updated])
 
         const removeTheFavorite = (favoriteId) => {
             removeFavorite(user, favoriteId)
@@ -42,6 +43,7 @@ const IndexFavorites = (props) => {
                 });
               })
               .then(() => {
+                setUpdated((prev) => !prev)
                 navigate(`/favorites`);
               })
               .catch(() => {
