@@ -18,7 +18,7 @@ const EditReviewModal = (props) => {
       const name = e.target.name;
       let value = e.target.value;
       console.log('etarget type', e.target.type);
-      console.log('this is e.target checked', e.target.checked);
+    //   console.log('this is e.target checked', e.target.checked);
 
 
             if (e.target.type === 'number') {
