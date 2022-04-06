@@ -1,26 +1,21 @@
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import ReviewForm from '../shared/ToyForm';
-import { updateReview } from '../../api/toys.js';
+import { updateReview } from '../../api/reviews.js';
 
 const EditReviewModal = (props) => {
-  const { user, pet, show, handleClose, msgAlert, triggerRefresh } = props;
-  const [toy, setToy] = useState(props.toy);
+  const { user, product, show, handleClose, msgAlert, triggerRefresh } = props;
+  const [review, setReview] = useState(props.review);
 
   const handleChange = (e) => {
     // e === event
     e.persist();
 
-    setToy((prevToy) => {
+    setReview((prevReview) => {
       const name = e.target.name;
       let value = e.target.value;
       console.log('etarget type', e.target.type);
       console.log('this is e.target checked', e.target.checked);
-      if (name === 'isSqueaky' && e.target.checked) {
-        value = true;
-      } else if (name === 'isSqueaky' && !e.target.checked) {
-        value = false;
-      }
 
       if (e.target.type === 'number') {
         value = parseInt(e.target.value);
@@ -28,10 +23,10 @@ const EditReviewModal = (props) => {
 
       const updatedValue = { [name]: value };
 
-      console.log('prevToy', prevToy);
+      console.log('prevReview', prevReview);
       console.log('updatedValue', updatedValue);
 
-      return { ...prevToy, ...updatedValue };
+      return { ...prevReview, ...updatedValue };
     });
   };
 
@@ -39,15 +34,15 @@ const EditReviewModal = (props) => {
     // e === event
     e.preventDefault();
 
-    console.log('the toy to submit', toy);
-    updateToy(user, pet.id, toy._id, toy)
+    console.log('the review to submit', review);
+    updateReview(user, product.id, review._id, review)
       // if create is successful, we should navigate to the show page
       .then(() => handleClose())
       // then we send a success message
       .then(() =>
         msgAlert({
-          heading: 'Toy updated!',
-          message: 'great! the pet loves it!',
+          heading: 'Review updated!',
+          message: 'great work',
           variant: 'success',
         })
       )
@@ -66,15 +61,15 @@ const EditReviewModal = (props) => {
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton></Modal.Header>
       <Modal.Body>
-        <ToyForm
-          toy={toy}
+        <ReviewForm
+          review={review}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          heading="Give pet a toy!"
+          heading="Give product a review!"
         />
       </Modal.Body>
     </Modal>
   );
 };
 
-export default EditToyModal;
+export default EditReviewModal;
