@@ -14,6 +14,7 @@ import SignOut from './components/auth/SignOut';
 import ChangePassword from './components/auth/ChangePassword';
 import ShowProduct from './components/products/ShowProduct';
 import CreateProduct from './components/products/CreateProduct';
+import IndexFavorites from './components/favorites/IndexFavorites';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -77,6 +78,14 @@ const App = () => {
           element={
             <RequireAuth user={user}>
               <CreateProduct msgAlert={msgAlert} user={user} />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <RequireAuth user={user}>
+              <IndexFavorites msgAlert={msgAlert} user={user} />
             </RequireAuth>
           }
         />
