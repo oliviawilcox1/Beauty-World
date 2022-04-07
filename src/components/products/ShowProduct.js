@@ -69,11 +69,11 @@ const ShowProduct = (props) => {
         // })
 
         for( const i in faveArray ) {
-          console.log('favorite product id', typeof faveArray[i].product._id)
-          console.log('Show product id', typeof id)
+          console.log('favorite product id', faveArray[i].product._id)
+          console.log('Show product id',  id)
           if (faveArray[i].product._id == id) {
             console.log('Do not display favorite button')
-            setHidden(true)
+            return setHidden(true) // this is not working
           } else {
             console.log('Display Favorite button')
             setHidden(false)
@@ -146,9 +146,8 @@ const ShowProduct = (props) => {
           console.log('review', reviewCards)
       }
   }
+console.log('IS THE HIDDEN CHANGING TO TRUE???: ', hidden)
 
-
- 
   //let reviews
 
   if (!product) {
@@ -193,7 +192,7 @@ const ShowProduct = (props) => {
                     <button style={{ borderRadius:'30px'}} onClick={() => removeTheProduct()}>Delete Product</button>
                     <button style={{ borderRadius:'30px'}}onClick={() => setModalOpen(true)}>Edit Product</button>
                     <button style={{ borderRadius:'30px'}}onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button>
-                    <button style={{visibility: hidden ? 'hidden' : 'visible' }} style={{ borderRadius:'30px'}} onClick={() => addFavorite()}>Add to Favorites</button> 
+                    <button style={{ borderRadius:'30px', display: hidden ? 'none' : 'block'}} onClick={() => addFavorite()}>Add to Favorites</button> 
                     
              
                      <p> {reviewCards}</p> 
@@ -239,7 +238,7 @@ const ShowProduct = (props) => {
         <p>Price: {product.price}</p>
         <p>Category: {product.category}</p>
         <small>Available: {product.available ? 'yes' : 'no'}</small>
-        <button style={{ visibility: hidden ? 'hidden' : 'visible' }} onClick={() => addFavorite()}>Add to Favorites</button> 
+        <button style={{ borderRadius:'30px', display: hidden ? 'none' : 'block'}} onClick={() => addFavorite()}>Add to Favorites</button> 
         <button onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button> 
         <p> {reviewCards}</p> 
         <EditProductModal
