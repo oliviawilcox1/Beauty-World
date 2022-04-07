@@ -44,7 +44,7 @@ const ShowReviewModal = (props) => {
     return (
         <>
             <Card className="m-2">
-                <Card.Header>{review.rating}</Card.Header>
+                <Card.Header>Rating: {review.rating}</Card.Header>
                 <Card.Body>
                     <small>{review.review}</small><br/>
                     {

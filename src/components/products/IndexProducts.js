@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const cardContainerLayout = {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     flexFlow: 'row wrap',
 }
 
@@ -72,9 +72,10 @@ const IndexProducts = (props) => {
 
         if (products.length > 0) {
             productCards = products.map(product => (
-                <div key={product.id} style={{ width:'300px'}}>
-                    <Link to={`/products/${product._id}`} style={{overflowWrap: 'break-word'}} >{product.name}</Link>
-                    <img src={`${product.image}`} style={{ height: '200px'}} class='img-thumbnail' />
+                <div key={product.id} style={{ width:'300px'}} className="productCards">
+                    <Link to={`/products/${product._id}`} style={{overflowWrap: 'break-word'}} className="links">{product.name}
+                   
+                    <img src={`${product.image}`} style={{ height: '200px'}} class='img-thumbnail'/> </Link>
                     <p>$ {product.price}</p>
                 </div>
             ))

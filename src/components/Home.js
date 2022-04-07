@@ -8,7 +8,7 @@ const Home = (props) => {
 
 	return (
 		<>
-			<h2>Home Page</h2>
+			{/* <h2>Product List </h2> */}
 			<IndexProducts user={user} msgAlert={msgAlert}/>
 		</>
 	)

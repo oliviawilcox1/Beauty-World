@@ -134,11 +134,11 @@ const ShowProduct = (props) => {
                     <p>Description: {product.description}</p>
                     <p>Price: {product.price}</p>
                     <p>Category: {product.category}</p>
-                    <small>Available: {product.available ? 'yes' : 'no'}</small>
-                    <button onClick={() => removeTheProduct()}>Delete Product</button>
-                    <button onClick={() => setModalOpen(true)}>Edit Product</button>
-                    <button onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button>
-                    <button onClick={() => addFavorite()}>Add to Favorites</button> 
+                    <small>Available: {product.available ? 'yes' : 'no'}</small> <br/>
+                    <button style={{ borderRadius:'30px'}} onClick={() => removeTheProduct()}>Delete Product</button>
+                    <button style={{ borderRadius:'30px'}}onClick={() => setModalOpen(true)}>Edit Product</button>
+                    <button style={{ borderRadius:'30px'}}onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button>
+                    <button style={{ borderRadius:'30px'}}onClick={() => addFavorite()}>Add to Favorites</button> 
              
                      <p> {reviewCards}</p> 
                  
