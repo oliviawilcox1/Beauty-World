@@ -119,7 +119,8 @@ const ShowProduct = (props) => {
           });
         })
         .then(() => {
-          navigate(`/products/${product._id}`);
+          setUpdated(prev => !prev)
+          navigate(`/products/${product._id}`); // somewhere here we need to update some state to remove the add favorite button
         })
       .catch(() => {
         msgAlert({
