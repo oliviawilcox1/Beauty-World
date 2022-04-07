@@ -20,6 +20,9 @@ const ShowReviewModal = (props) => {
     // }
 
     const destroyReview = () => {
+        console.log('DESTROYING REVIEW')
+        console.log('PRODUCT: ', product._id)
+        console.log('REVIEW: ', review._id)
         deleteReview(user, product._id, review._id)
             .then(() =>
                 msgAlert({
@@ -29,18 +32,27 @@ const ShowReviewModal = (props) => {
                 }))
             .then(() => triggerRefresh())
             // if there is an error, we'll send an error message
-            .catch(() =>
-                msgAlert({
-                    heading: 'Oh No!',
-                    message: 'Please try again.',
-                    variant: 'danger',
-            }))
+            .catch((error) =>
+                console.log('ERROR IS: ', error)
+            //     msgAlert({
+            //         heading: 'Oh No!',
+            //         message: error,
+            //         variant: 'danger',
+            // })
+            )
     }
 
-
+// there is an error being thrown below when it is trying to call product.owner.id on seed data without an owner...
+// below will account for this error
+// let productOwnerId = false
+// try {
+//     if (product.owner._id) productOwnerId = product.owner._id
+// }
+// catch (error) {console.log(error)}
 
     // console.log(setBgCondition(toy.condition))
     // style={setBgCondition(review.owner)}
+    console.log ('REVIEW REVIEW REVIEW: ', review)
     return (
         <>
             <Card className="m-2">
@@ -48,7 +60,7 @@ const ShowReviewModal = (props) => {
                 <Card.Body>
                     <small>{review.review}</small><br/>
                     {
-                        user && (user.id === product.owner.id) 
+                        user && (user._id === review.owner) 
                         ?
                             <>
                                 <Button variant="warning" onClick={() => setShowEditModal(true)}>

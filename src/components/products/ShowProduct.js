@@ -9,7 +9,7 @@ import { Spinner, Container, Card, Button } from 'react-bootstrap'
 import { useParams, useNavigate } from 'react-router-dom';
 import EditProductModal from './EditProductModal';
 import ShowReview from '../reviews/ShowReview'
-import CreateReview from '../reviews/CreateReview'
+import CreateReviewModal from '../reviews/CreateReviewModal';
 
 const cardContainerLayout = {
   display: 'flex',
@@ -130,7 +130,8 @@ const ShowProduct = (props) => {
       }); 
   }
 
-  let reviewCards
+  let reviewCards = null;
+
   if (product) {
       if (product.reviews.length > 0) {
           reviewCards = product.reviews.map(review => (
@@ -205,7 +206,7 @@ const ShowProduct = (props) => {
                       updateProduct={updateProduct}
                       handleClose={() => setModalOpen(false)}
                     />
-                    <CreateReview
+                    <CreateReviewModal
                     product={product}
                     show={reviewModalOpen}
                     user={user}
@@ -237,7 +238,9 @@ const ShowProduct = (props) => {
         <p>Price: {product.price}</p>
         <p>Category: {product.category}</p>
         <small>Available: {product.available ? 'yes' : 'no'}</small>
-        <button style={{ visibility: hidden ? 'hidden' : 'visible' }} onClick={() => addFavorite()}>Add to Favorites</button>  
+        <button style={{ visibility: hidden ? 'hidden' : 'visible' }} onClick={() => addFavorite()}>Add to Favorites</button> 
+        <button onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button> 
+        <p> {reviewCards}</p> 
         <EditProductModal
           product={product}
           show={modalOpen}
@@ -247,7 +250,7 @@ const ShowProduct = (props) => {
           updateProduct={updateProduct}
           handleClose={() => setModalOpen(false)}
         />
-         <CreateReview
+         <CreateReviewModal
           product={product}
           show={reviewModalOpen}
           user={user}
@@ -259,10 +262,6 @@ const ShowProduct = (props) => {
     )
 
   }
-
-
-
-
 
     return (
       <>
@@ -277,6 +276,8 @@ const ShowProduct = (props) => {
         <p>Price: {product.price}</p>
         <p>Category: {product.category}</p>
         <small>Available: {product.available ? 'yes' : 'no'}</small>
+        <button onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button>
+        <p> {reviewCards}</p> 
         <EditProductModal
           product={product}
           show={modalOpen}
@@ -286,7 +287,7 @@ const ShowProduct = (props) => {
           updateProduct={updateProduct}
           handleClose={() => setModalOpen(false)}
         />
-         <CreateReview
+         <CreateReviewModal
           product={product}
           show={reviewModalOpen}
           user={user}
