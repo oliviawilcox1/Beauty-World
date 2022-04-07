@@ -15,6 +15,7 @@ import ChangePassword from './components/auth/ChangePassword';
 import ShowProduct from './components/products/ShowProduct';
 import CreateProduct from './components/products/CreateProduct';
 import IndexFavorites from './components/favorites/IndexFavorites';
+import CreateReviewModal from './components/reviews/CreateReviewModal';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -93,6 +94,22 @@ const App = () => {
           element={
             <RequireAuth user={user}>
               <IndexFavorites msgAlert={msgAlert} user={user} />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/reviews/:productId/:reviewId"
+          element={
+            <RequireAuth user={user}>
+            <ShowProduct msgAlert={msgAlert} user={user} />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/reviews/:id"
+          element={
+            <RequireAuth user={user}>
+              <CreateReviewModal msgAlert={msgAlert} user={user} />
             </RequireAuth>
           }
         />

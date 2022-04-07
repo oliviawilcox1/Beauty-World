@@ -3,13 +3,13 @@ import { Form, Container, Button } from 'react-bootstrap'
 
 const ReviewForm = (props) => {
     
-    const { review, handleChange, handleSubmit, heading} = props
+    const { user, review, handleChange, handleSubmit, heading} = props
+    console.log('USER', user)
 
     return (
         <Container className="justify-content-center">
             <h3>{heading}</h3>
             <Form onSubmit={handleSubmit}>
-                <Form.Label>Description</Form.Label>
                 <Form.Control 
                     placeholder="Enter your review!"
                     value={review.review}
