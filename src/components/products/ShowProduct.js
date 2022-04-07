@@ -18,7 +18,7 @@ const ShowProduct = (props) => {
   const [product, setProduct] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [updated, setUpdated] = useState(false);
-  let hidden
+  const [hidden, setHidden] = useState(false)
   // const [favoriteArray, setFavoriteArray]  = useState([])
   const { user, msgAlert } = props;
   const { id } = useParams();
@@ -26,7 +26,11 @@ const ShowProduct = (props) => {
   console.log('id in showProduct', id);
   useEffect(() => {
     getOneProduct(id)
-      .then((res) => setProduct(res.data.product))
+      .then((res) => {
+        setProduct(res.data.product)
+        console.log(res.data.product)
+        isFavorite()
+      })
       .then(() => {
         msgAlert({
           heading: 'Here is the product!',
@@ -51,15 +55,28 @@ const ShowProduct = (props) => {
           return faveArray
         })
       .then(faveArray => {
+        // Itterating through faveArray but we're going through the entire thing and ending on the last item in array
+        // whether or not something ends up equaling the Id if the last item in the array does not equal the array,
+        // set hidden will be set equal to false
+        // consider writing a filter function that returns it true or false
+        // set hidden to the value that is return to the 'variable is fave'
+        const isFave = faveArray.filter((product) => {
+          product 
+        })
+
         for( const i in faveArray ) {
-          console.log('favorite product id', faveArray[i].product._id)
-          console.log('Show product id', id)
-          if ((faveArray[i].product._id) === id) {
+          console.log('favorite product id', typeof faveArray[i].product._id)
+          console.log('Show product id', typeof id)
+          if (faveArray[i].product._id == id) {
             console.log('Do not display favorite button')
-            return hidden = 'hidden'
-          } 
-        } return hidden = 'display'
+            setHidden(true)
+          } else {
+            console.log('Display Favorite button')
+            setHidden(false)
+          }
+        } 
       })  
+      .catch(error => console.error)
   }
 
   const removeTheProduct = () => {
@@ -119,7 +136,7 @@ const ShowProduct = (props) => {
   // console.log('PRODUCT', product)
 
   // let hidden
-  console.log(isFavorite())
+  // console.log(isFavorite())
   // if (isFavorite()) {
   //   console.log('button should be hidden')
   //   hidden = 'none'
@@ -131,6 +148,9 @@ const ShowProduct = (props) => {
 
 
   try{
+  
+  const productOwnerId = product
+  console.log('Product Owner Id', productOwnerId)
             // check to see if there is a user signed in and if the product has an owner
             if(user && product.owner._id){
               // check to see if the user id matches the product owner's ID & display conditional 'edit' and 'delete' buttons
@@ -150,13 +170,13 @@ const ShowProduct = (props) => {
                     <small>Available: {product.available ? 'yes' : 'no'}</small>
                     <button onClick={() => removeTheProduct()}>Delete Product</button>
                     <button onClick={() => setModalOpen(true)}>Edit Product</button>
-                    <button style={{visibility: hidden}} onClick={() => addFavorite()}>Add to Favorites</button>  
+                    <button style={{visibility: hidden ? 'hidden' : 'visible' }} onClick={() => addFavorite()}>Add to Favorites</button>  
                     <EditProductModal
                       product={product}
                       show={modalOpen}
                       user={user}
                       msgAlert={msgAlert}
-                      triggerRefresh={() => setUpdated((prev) => !prev)}
+                      // triggerRefresh={() => setUpdated((prev) => !prev)}
                       updateProduct={updateProduct}
                       handleClose={() => setModalOpen(false)}
                     />
@@ -182,7 +202,7 @@ const ShowProduct = (props) => {
         <p>Price: {product.price}</p>
         <p>Category: {product.category}</p>
         <small>Available: {product.available ? 'yes' : 'no'}</small>
-        <button style={{visibility: hidden}} onClick={() => addFavorite()}>Add to Favorites</button>  
+        <button style={{ visibility: hidden ? 'hidden' : 'visible' }} onClick={() => addFavorite()}>Add to Favorites</button>  
         <EditProductModal
           product={product}
           show={modalOpen}
