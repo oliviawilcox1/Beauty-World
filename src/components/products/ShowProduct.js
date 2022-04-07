@@ -4,12 +4,12 @@ import {
   updateProduct,
   removeProduct,
 } from '../../api/products';
-import { createFavorite } from '../../api/favorites';
+import { createFavorite, getAllFavorites } from '../../api/favorites';
 import { Spinner, Container, Card, Button } from 'react-bootstrap'
 import { useParams, useNavigate } from 'react-router-dom';
 import EditProductModal from './EditProductModal';
 import ShowReview from '../reviews/ShowReview'
-import CreateReview from '../reviews/CreateReview'
+import CreateReviewModal from '../reviews/CreateReviewModal';
 
 const cardContainerLayout = {
   display: 'flex',
@@ -22,13 +22,19 @@ const ShowProduct = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [reviewModalOpen, setReviewModalOpen] = useState(false)
   const [updated, setUpdated] = useState(false);
+  const [hidden, setHidden] = useState(false)
+  // const [favoriteArray, setFavoriteArray]  = useState([])
   const { user, msgAlert } = props;
   const { id } = useParams();
   const navigate = useNavigate();
   // console.log('id in showProduct', product._id);
   useEffect(() => {
     getOneProduct(id)
-      .then((res) => setProduct(res.data.product))
+      .then((res) => {
+        setProduct(res.data.product)
+        console.log(res.data.product)
+        isFavorite()
+      })
       .then(() => {
         msgAlert({
           heading: 'Here is the product!',
@@ -42,6 +48,40 @@ const ShowProduct = (props) => {
         });
       });
   }, [updated]);
+  
+  const isFavorite = () => {
+    let faveArray = []
+    getAllFavorites()
+      .then(res => {
+          console.log('this is the favoritesArray', res.data.favorites)
+          // setFavoriteArray(res.data.favorites)
+          faveArray = res.data.favorites
+          return faveArray
+        })
+      .then(faveArray => {
+        // Itterating through faveArray but we're going through the entire thing and ending on the last item in array
+        // whether or not something ends up equaling the Id if the last item in the array does not equal the array,
+        // set hidden will be set equal to false
+        // consider writing a filter function that returns it true or false
+        // set hidden to the value that is return to the 'variable is fave'
+        // const isFave = faveArray.filter((product) => {
+        //   product 
+        // })
+
+        for( const i in faveArray ) {
+          console.log('favorite product id', typeof faveArray[i].product._id)
+          console.log('Show product id', typeof id)
+          if (faveArray[i].product._id == id) {
+            console.log('Do not display favorite button')
+            setHidden(true)
+          } else {
+            console.log('Display Favorite button')
+            setHidden(false)
+          }
+        } 
+      })  
+      .catch(error => console.error)
+  }
 
   const removeTheProduct = () => {
     removeProduct(user, product._id)
@@ -90,7 +130,8 @@ const ShowProduct = (props) => {
       }); 
   }
 
-  let reviewCards
+  let reviewCards = null;
+
   if (product) {
       if (product.reviews.length > 0) {
           reviewCards = product.reviews.map(review => (
@@ -116,8 +157,22 @@ const ShowProduct = (props) => {
   // console.log('USER', user)
   // console.log('PRODUCT', product)
 
+  // let hidden
+  // console.log(isFavorite())
+  // if (isFavorite()) {
+  //   console.log('button should be hidden')
+  //   hidden = 'none'
+  // } else {
+  //   console.log('Favorite should be visible')
+  //   hidden = 'visible'
+  // }
+
+
 
   try{
+  
+  const productOwnerId = product
+  console.log('Product Owner Id', productOwnerId)
             // check to see if there is a user signed in and if the product has an owner
             if(user && product.owner._id){
               // check to see if the user id matches the product owner's ID & display conditional 'edit' and 'delete' buttons
@@ -138,7 +193,8 @@ const ShowProduct = (props) => {
                     <button style={{ borderRadius:'30px'}} onClick={() => removeTheProduct()}>Delete Product</button>
                     <button style={{ borderRadius:'30px'}}onClick={() => setModalOpen(true)}>Edit Product</button>
                     <button style={{ borderRadius:'30px'}}onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button>
-                    <button style={{ borderRadius:'30px'}}onClick={() => addFavorite()}>Add to Favorites</button> 
+                    <button style={{visibility: hidden ? 'hidden' : 'visible' }} style={{ borderRadius:'30px'}} onClick={() => addFavorite()}>Add to Favorites</button> 
+                    
              
                      <p> {reviewCards}</p> 
                  
@@ -147,11 +203,11 @@ const ShowProduct = (props) => {
                       show={modalOpen}
                       user={user}
                       msgAlert={msgAlert}
-                      triggerRefresh={() => setUpdated((prev) => !prev)}
+                      // triggerRefresh={() => setUpdated((prev) => !prev)}
                       updateProduct={updateProduct}
                       handleClose={() => setModalOpen(false)}
                     />
-                    <CreateReview
+                    <CreateReviewModal
                     product={product}
                     show={reviewModalOpen}
                     user={user}
@@ -168,6 +224,7 @@ const ShowProduct = (props) => {
   } catch(error){
     console.log('ERROR:', error)
   }
+
   if(user){
     return (
       <>
@@ -182,7 +239,9 @@ const ShowProduct = (props) => {
         <p>Price: {product.price}</p>
         <p>Category: {product.category}</p>
         <small>Available: {product.available ? 'yes' : 'no'}</small>
-        <button onClick={() => addFavorite()}>Add to Favorites</button>  
+        <button style={{ visibility: hidden ? 'hidden' : 'visible' }} onClick={() => addFavorite()}>Add to Favorites</button> 
+        <button onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button> 
+        <p> {reviewCards}</p> 
         <EditProductModal
           product={product}
           show={modalOpen}
@@ -192,7 +251,7 @@ const ShowProduct = (props) => {
           updateProduct={updateProduct}
           handleClose={() => setModalOpen(false)}
         />
-         <CreateReview
+         <CreateReviewModal
           product={product}
           show={reviewModalOpen}
           user={user}
@@ -204,10 +263,6 @@ const ShowProduct = (props) => {
     )
 
   }
-
-
-
-
 
     return (
       <>
@@ -222,6 +277,8 @@ const ShowProduct = (props) => {
         <p>Price: {product.price}</p>
         <p>Category: {product.category}</p>
         <small>Available: {product.available ? 'yes' : 'no'}</small>
+        <button onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button>
+        <p> {reviewCards}</p> 
         <EditProductModal
           product={product}
           show={modalOpen}
@@ -231,7 +288,7 @@ const ShowProduct = (props) => {
           updateProduct={updateProduct}
           handleClose={() => setModalOpen(false)}
         />
-         <CreateReview
+         <CreateReviewModal
           product={product}
           show={reviewModalOpen}
           user={user}

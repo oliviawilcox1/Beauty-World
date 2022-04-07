@@ -11,6 +11,8 @@ const CreateReviewModal = (props) => {
         // e === event
         e.persist()
 
+        addUsertoReview()
+
         setReview(prevReview => {
             const name = e.target.name
             let value = e.target.value
@@ -27,6 +29,14 @@ const CreateReviewModal = (props) => {
 
             return {...prevReview, ...updatedValue}
         })
+    }
+
+    const addUsertoReview = () => {
+        setReview(prevReview => {
+            const updatedValue = { "owner": user._id }
+            return {...prevReview, ...updatedValue}
+            }   
+        )
     }
 
     const handleSubmit = (e) => {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getAllFavorites } from '../../api/favorites'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { removeFavorite } from '../../api/favorites'
 
 const cardContainerLayout = {
     display: 'flex',
@@ -10,7 +11,9 @@ const cardContainerLayout = {
 
 const IndexFavorites = (props) => {
         const [favorites, setfavorites] = useState(null)
+        const [updated, setUpdated] = useState(false)
         const { user, msgAlert } = props
+        const navigate = useNavigate()
         useEffect(()=> {
             getAllFavorites()
                 .then(res => {
@@ -28,7 +31,30 @@ const IndexFavorites = (props) => {
                         heading:"Uh Oh, something went wrong finding your favorites..",
                         variant: 'danger'
                     }))
-            },[])
+            },[updated])
+
+        const removeTheFavorite = (favoriteId) => {
+            removeFavorite(user, favoriteId)
+            .then(() => {
+                msgAlert({
+                  heading: 'product politely removed from favorites!',
+                  message: "they're gone",
+                  variant: 'success',
+                });
+              })
+              .then(() => {
+                setUpdated((prev) => !prev)
+                navigate(`/favorites`);
+              })
+              .catch(() => {
+                msgAlert({
+                  heading: 'something went wrong',
+                  message: 'that aint it',
+                  variant: 'danger',
+                });
+              });
+        }
+        
         if (!favorites) {
             return <p>loading...</p>
         } else if (favorites.length === 0) {
@@ -43,6 +69,7 @@ const IndexFavorites = (props) => {
                     <Link to={`/products/${favorite.product._id}`} style={{overflowWrap: 'break-word'}} >{favorite.product.name}</Link>
                     <img src={`${favorite.product.image}`} style={{ height: '200px'}} class='img-thumbnail' />
                     <p>$ {favorite.product.price}</p>
+                    <button onClick={() => removeTheFavorite(favorite._id)}>Remove from Favorites</button>
                 </div>
             ))
         }
