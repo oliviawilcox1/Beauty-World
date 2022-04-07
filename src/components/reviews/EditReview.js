@@ -42,7 +42,7 @@ const EditReviewModal = (props) => {
 
 
     console.log('the review to submit', review);
-    updateReview(user, product.id, review._id, review)
+    updateReview(user, product._id, review._id, review)
       // if create is successful, we should navigate to the show page
       .then(() => handleClose())
       // then we send a success message
