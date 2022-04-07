@@ -5,8 +5,11 @@ import {
   removeProduct,
 } from '../../api/products';
 import { createFavorite, getAllFavorites } from '../../api/favorites';
+import { Spinner, Container, Card, Button } from 'react-bootstrap'
 import { useParams, useNavigate } from 'react-router-dom';
 import EditProductModal from './EditProductModal';
+import ShowReview from '../reviews/ShowReview'
+import CreateReview from '../reviews/CreateReview'
 
 const cardContainerLayout = {
   display: 'flex',
@@ -17,13 +20,14 @@ const cardContainerLayout = {
 const ShowProduct = (props) => {
   const [product, setProduct] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [reviewModalOpen, setReviewModalOpen] = useState(false)
   const [updated, setUpdated] = useState(false);
   const [hidden, setHidden] = useState(false)
   // const [favoriteArray, setFavoriteArray]  = useState([])
   const { user, msgAlert } = props;
   const { id } = useParams();
   const navigate = useNavigate();
-  console.log('id in showProduct', id);
+  // console.log('id in showProduct', product._id);
   useEffect(() => {
     getOneProduct(id)
       .then((res) => {
@@ -60,9 +64,9 @@ const ShowProduct = (props) => {
         // set hidden will be set equal to false
         // consider writing a filter function that returns it true or false
         // set hidden to the value that is return to the 'variable is fave'
-        const isFave = faveArray.filter((product) => {
-          product 
-        })
+        // const isFave = faveArray.filter((product) => {
+        //   product 
+        // })
 
         for( const i in faveArray ) {
           console.log('favorite product id', typeof faveArray[i].product._id)
@@ -126,6 +130,23 @@ const ShowProduct = (props) => {
       }); 
   }
 
+  let reviewCards
+  if (product) {
+      if (product.reviews.length > 0) {
+          reviewCards = product.reviews.map(review => (
+           
+              // need to pass all props needed for updateToy func in edit modal
+              <ShowReview 
+                  key={review._id} review={review} product={product} 
+                  user={user} msgAlert={msgAlert}
+                  triggerRefresh={() => setUpdated(prev => !prev)}
+              />
+          ))
+          console.log('review', reviewCards)
+      }
+  }
+
+
  
   //let reviews
 
@@ -171,6 +192,10 @@ const ShowProduct = (props) => {
                     <button onClick={() => removeTheProduct()}>Delete Product</button>
                     <button onClick={() => setModalOpen(true)}>Edit Product</button>
                     <button style={{visibility: hidden ? 'hidden' : 'visible' }} onClick={() => addFavorite()}>Add to Favorites</button>  
+                    <button onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button>
+             
+                     <p> {reviewCards}</p> 
+                 
                     <EditProductModal
                       product={product}
                       show={modalOpen}
@@ -180,7 +205,17 @@ const ShowProduct = (props) => {
                       updateProduct={updateProduct}
                       handleClose={() => setModalOpen(false)}
                     />
+                    <CreateReview
+                    product={product}
+                    show={reviewModalOpen}
+                    user={user}
+                    msgAlert={msgAlert}
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                    handleClose={() => setReviewModalOpen(false)}
+                    
+                    />
                   </>
+                
                 )
               }
             }
@@ -212,6 +247,14 @@ const ShowProduct = (props) => {
           updateProduct={updateProduct}
           handleClose={() => setModalOpen(false)}
         />
+         <CreateReview
+          product={product}
+          show={reviewModalOpen}
+          user={user}
+          msgAlert={msgAlert}
+          triggerRefresh={() => setUpdated(prev => !prev)}
+          handleClose={() => setReviewModalOpen(false)}
+          />
       </>
     )
 
@@ -243,6 +286,14 @@ const ShowProduct = (props) => {
           updateProduct={updateProduct}
           handleClose={() => setModalOpen(false)}
         />
+         <CreateReview
+          product={product}
+          show={reviewModalOpen}
+          user={user}
+          msgAlert={msgAlert}
+          triggerRefresh={() => setUpdated(prev => !prev)}
+          handleClose={() => setReviewModalOpen(false)}
+          />
       </>
     );
   };

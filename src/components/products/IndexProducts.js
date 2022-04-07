@@ -3,6 +3,7 @@ import { getAllProducts } from '../../api/products'
 import { Card } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 
+
 const cardContainerLayout = {
     display: 'flex',
     justifyContent: 'center',
@@ -12,6 +13,7 @@ const cardContainerLayout = {
 const IndexProducts = (props) => {
         const [products, setProducts] = useState(null)
         const { user, msgAlert } = props
+
         useEffect(()=> {
             getAllProducts()
                 .then(res => {
@@ -80,12 +82,14 @@ const IndexProducts = (props) => {
 
         return(
             <>
+            
                 <h3>All The Products</h3>
                 {/* using an inline style with an object declared above */}
+               {/* <RequireAuth user={user}> */}
                 <div style={cardContainerLayout}>
                     {productCards}
                 </div>
-               
+                {/* </RequireAuth> */}
             </>
         )
 
@@ -93,4 +97,3 @@ const IndexProducts = (props) => {
 
 export default IndexProducts
 
-// wonder woman

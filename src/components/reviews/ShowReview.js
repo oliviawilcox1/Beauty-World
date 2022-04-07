@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
-import EditReview from './EditReview'
-import { removeReview } from '../../api/reviews'
+import EditReviewModal from './EditReview'
+import { deleteReview } from '../../api/reviews.js'
 
-const ShowReview = (props) => {
+const ShowReviewModal = (props) => {
     // most of these are simply to pass to edit modal
     const {review, product, user, triggerRefresh, msgAlert} = props
 
@@ -20,11 +20,11 @@ const ShowReview = (props) => {
     // }
 
     const destroyReview = () => {
-        removeReview(user, product._id, review._id)
+        deleteReview(user, product._id, review._id)
             .then(() =>
                 msgAlert({
-                    heading: 'Review Added!',
-                    message: 'Thank you for your input',
+                    heading: 'Review Deleted!',
+                    message: 'Thank you for your input.',
                     variant: 'success',
                 }))
             .then(() => triggerRefresh())
@@ -32,7 +32,7 @@ const ShowReview = (props) => {
             .catch(() =>
                 msgAlert({
                     heading: 'Oh No!',
-                    message: 'that aint it',
+                    message: 'Please try again.',
                     variant: 'danger',
             }))
     }
@@ -63,9 +63,9 @@ const ShowReview = (props) => {
                     }
                 </Card.Body>
             </Card>
-            <EditToyModal 
+            <EditReviewModal 
                 user={user}
-                productt={product}
+                product={product}
                 review={review}
                 show={showEditModal}
                 handleClose={() => setShowEditModal(false)}
@@ -76,4 +76,4 @@ const ShowReview = (props) => {
     )
 }
 
-export default ShowReview
+export default ShowReviewModal
