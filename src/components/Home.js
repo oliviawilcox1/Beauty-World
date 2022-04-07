@@ -1,6 +1,11 @@
 import IndexProducts from "./products/IndexProducts"
 
 
+const homeStyle = {
+	backgroundColor: "#A6C48A",
+}
+
+
 const Home = (props) => {
 	// const { msgAlert, user } = props
 	console.log('props in home', props)
@@ -9,7 +14,7 @@ const Home = (props) => {
 	return (
 		<>
 			{/* <h2>Product List </h2> */}
-			<IndexProducts user={user} msgAlert={msgAlert}/>
+			<IndexProducts style = {homeStyle} user={user} msgAlert={msgAlert}/>
 		</>
 	)
 }

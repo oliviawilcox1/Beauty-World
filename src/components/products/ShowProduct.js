@@ -80,7 +80,7 @@ const ShowProduct = (props) => {
           }
         } 
       })  
-      .catch(error => console.error)
+      .catch(error => console.log(error))
   }
 
   const removeTheProduct = () => {
@@ -120,7 +120,7 @@ const ShowProduct = (props) => {
         })
         .then(() => {
           setUpdated(prev => !prev)
-          navigate(`/products/${product._id}`); // somewhere here we need to update some state to remove the add favorite button
+          navigate(`/products/${product._id}`); 
         })
       .catch(() => {
         msgAlert({
@@ -138,7 +138,7 @@ const ShowProduct = (props) => {
           reviewCards = product.reviews.map(review => (
            
               // need to pass all props needed for updateToy func in edit modal
-              <ShowReview 
+              <ShowReview
                   key={review._id} review={review} product={product} 
                   user={user} msgAlert={msgAlert}
                   triggerRefresh={() => setUpdated(prev => !prev)}
@@ -152,7 +152,7 @@ console.log('IS THE HIDDEN CHANGING TO TRUE???: ', hidden)
   //let reviews
 
   if (!product) {
-    return <span>Loading...</span>;
+    return <span style = {{backgroundColor: "#ff990083" , height: "100%"}}>Loading...</span>;
   }
   // console.log('USER', user)
   // console.log('PRODUCT', product)
@@ -178,25 +178,23 @@ console.log('IS THE HIDDEN CHANGING TO TRUE???: ', hidden)
               // check to see if the user id matches the product owner's ID & display conditional 'edit' and 'delete' buttons
               if (user._id === product.owner._id){
                 return (
-                  <>
-                    <h1>{product.name}</h1>
-                    <img
-                      src={`${product.image}`}
-                      alt=""
-                      style={{ height: '200px' }}
-                      class="img-thumbnail"
-                    />
-                    <p>Description: {product.description}</p>
-                    <p>Price: {product.price}</p>
-                    <p>Category: {product.category}</p>
-                    <small>Available: {product.available ? 'yes' : 'no'}</small> <br/>
-                    <button style={{ borderRadius:'30px'}} onClick={() => removeTheProduct()}>Delete Product</button>
-                    <button style={{ borderRadius:'30px'}}onClick={() => setModalOpen(true)}>Edit Product</button>
-                    <button style={{ borderRadius:'30px'}}onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button>
-                    <button style={{ borderRadius:'30px', display: hidden ? 'none' : 'block'}} onClick={() => addFavorite()}>Add to Favorites</button> 
-                    
-             
-                     <p> {reviewCards}</p> 
+                <body className='col-sm-10 col-md-8 mx-auto mt-5' style = {{backgroundColor: "rgb(255 153 0 / 0%)", height: "100%"}}>  
+                        <h1>{product.name}</h1>
+                        <img
+                          src={`${product.image}`}
+                          alt=""
+                          style={{ height: '200px' }}
+                          class="img-thumbnail"
+                        />
+                        <p>Description: {product.description}</p>
+                        <p>Price: {product.price}</p>
+                        <p>Category: {product.category}</p>
+                        <small>Available: {product.available ? 'yes' : 'no'}</small> <br/>
+                        <button style={{ borderRadius:'30px'}} onClick={() => removeTheProduct()}>Delete Product</button>
+                        <button style={{ borderRadius:'30px'}}onClick={() => setModalOpen(true)}>Edit Product</button>
+                        <button style={{ borderRadius:'30px'}}onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button>
+                        <button style={{ borderRadius:'30px', display: hidden ? 'none' : 'block'}} onClick={() => addFavorite()}>Add to Favorites</button>              
+                      <p> {reviewCards}</p> 
                  
                     <EditProductModal
                       product={product}
@@ -216,7 +214,7 @@ console.log('IS THE HIDDEN CHANGING TO TRUE???: ', hidden)
                     handleClose={() => setReviewModalOpen(false)}
                     
                     />
-                  </>
+                  </body>
                 
                 )
               }
@@ -227,7 +225,7 @@ console.log('IS THE HIDDEN CHANGING TO TRUE???: ', hidden)
 
   if(user){
     return (
-      <>
+      <body className='col-lg-10 col-md-8 mx-auto mt-5' style = {{backgroundColor: "rgb(255 153 0 / 0%)", height: "100%"}}> 
         <h1>{product.name}</h1>
         <img
           src={`${product.image}`}
@@ -259,7 +257,7 @@ console.log('IS THE HIDDEN CHANGING TO TRUE???: ', hidden)
           triggerRefresh={() => setUpdated(prev => !prev)}
           handleClose={() => setReviewModalOpen(false)}
           />
-      </>
+      </body>
     )
 
   }
