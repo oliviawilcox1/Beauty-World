@@ -8,6 +8,7 @@ const cardContainerLayout = {
     display: 'flex',
     justifyContent: 'space-between',
     flexFlow: 'row wrap',
+    backgroundColor: "rgb(255 153 0 / 15%)"
 }
 
 const IndexProducts = (props) => {
@@ -75,7 +76,7 @@ const IndexProducts = (props) => {
                 <div key={product.id} style={{ width:'300px'}} className="productCards">
                     <Link to={`/products/${product._id}`} style={{overflowWrap: 'break-word'}} className="links">{product.name}
                    
-                    <img src={`${product.image}`} style={{ height: '200px'}} class='img-thumbnail'/> </Link>
+                    <img src={`${product.image}`} style={{ height: '200px', borderRadius: "50px"}} class='img-thumbnail'/> </Link>
                     <p>$ {product.price}</p>
                 </div>
             ))
@@ -84,7 +85,7 @@ const IndexProducts = (props) => {
         return(
             <>
             
-                <h3>All The Products</h3>
+                <h3 style = {{backgroundColor: "rgb(255 153 0 / 15%)" }}>All The Products</h3>
                 {/* using an inline style with an object declared above */}
                {/* <RequireAuth user={user}> */}
                 <div style={cardContainerLayout}>

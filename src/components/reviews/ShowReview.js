@@ -52,12 +52,27 @@ const ShowReviewModal = (props) => {
 
     // console.log(setBgCondition(toy.condition))
     // style={setBgCondition(review.owner)}
+
+    const bodyStyle = {
+        backgroundColor: '#F6E7CB',
+        width: "300px",
+    }
+    const cardHeaderStyle = {
+        backgroundColor: '#74D3AE',
+        width: "300px",
+    }
+
+    const cardStyle = {
+        width: "300px"
+    }
+
+
     console.log ('REVIEW REVIEW REVIEW: ', review)
     return (
         <>
-            <Card className="m-2">
-                <Card.Header>Rating: {review.rating}</Card.Header>
-                <Card.Body>
+            <Card className="m-2" style={cardStyle}>
+                <Card.Header style={cardHeaderStyle}>Rating: {review.rating}</Card.Header>
+                <Card.Body style = {bodyStyle}>
                     <small>{review.review}</small><br/>
                     {
                         user && (user._id === review.owner) 

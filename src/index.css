@@ -3,6 +3,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Cantarell';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #ff990083;
 }
 
 .links {
@@ -22,6 +23,7 @@ button{
   border-color: white;
   border-radius: 30px;
 }
+
 
 /* 
 code {
