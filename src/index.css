@@ -3,7 +3,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Cantarell';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ff990083;
 }
 
 .links {
@@ -23,16 +22,3 @@ button{
   border-color: white;
   border-radius: 30px;
 }
-
-
-/* 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-
-} */
-
-/* 
-'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */

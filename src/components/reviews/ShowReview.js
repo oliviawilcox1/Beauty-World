@@ -20,16 +20,16 @@ const ShowReviewModal = (props) => {
     // }
 
     const destroyReview = () => {
-        console.log('DESTROYING REVIEW')
-        console.log('PRODUCT: ', product._id)
-        console.log('REVIEW: ', review._id)
+        // console.log('DESTROYING REVIEW')
+        // console.log('PRODUCT: ', product._id)
+        // console.log('REVIEW: ', review._id)
         deleteReview(user, product._id, review._id)
-            .then(() =>
-                msgAlert({
-                    heading: 'Review Deleted!',
-                    message: 'Thank you for your input.',
-                    variant: 'success',
-                }))
+            // .then(() =>
+            //     msgAlert({
+            //         heading: 'Review Deleted!',
+            //         message: 'Thank you for your input.',
+            //         variant: 'success',
+            //     }))
             .then(() => triggerRefresh())
             // if there is an error, we'll send an error message
             .catch((error) =>
@@ -54,11 +54,11 @@ const ShowReviewModal = (props) => {
     // style={setBgCondition(review.owner)}
 
     const bodyStyle = {
-        backgroundColor: '#F6E7CB',
+        backgroundColor: 'white',
         width: "300px",
     }
     const cardHeaderStyle = {
-        backgroundColor: '#74D3AE',
+        backgroundColor: 'white',
         width: "300px",
     }
 

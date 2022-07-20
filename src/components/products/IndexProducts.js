@@ -7,8 +7,7 @@ import { Link } from 'react-router-dom'
 const cardContainerLayout = {
     display: 'flex',
     justifyContent: 'space-between',
-    flexFlow: 'row wrap',
-    backgroundColor: "rgb(255 153 0 / 15%)"
+    flexFlow: 'row wrap'
 }
 
 const IndexProducts = (props) => {
@@ -21,19 +20,7 @@ const IndexProducts = (props) => {
                     console.log('this is the res', res)
                     setProducts(res.data.products)
                 })
-                .then(()=> {
-                    msgAlert({
-                        heading:"Found Products",
-                        // message: indexPetsSuccess,
-                        variant: 'success'
-                    })
-                })
-                .catch(() => 
-                    msgAlert({
-                        heading:"No products?!",
-                        // message: indexPetsFailure,
-                        variant: 'danger'
-                    }))
+                .catch(error => console.log(error))
             },[])
 
 
@@ -73,10 +60,9 @@ const IndexProducts = (props) => {
 
         if (products.length > 0) {
             productCards = products.map(product => (
-                <div key={product.id} style={{ width:'300px'}} className="productCards">
-                    <Link to={`/products/${product._id}`} style={{overflowWrap: 'break-word'}} className="links">{product.name}
-                   
-                    <img src={`${product.image}`} style={{ height: '200px', borderRadius: "50px"}} class='img-thumbnail'/> </Link>
+                <div key={product.id} style={{ width: '30%'}}className="productCards">
+                    <Link to={`/products/${product._id}`}  className="links"> {product.name}
+                    <img src={`${product.image}`}  class='img-thumbnail'/> </Link>
                     <p>$ {product.price}</p>
                 </div>
             ))
@@ -85,13 +71,10 @@ const IndexProducts = (props) => {
         return(
             <>
             
-                <h3 style = {{backgroundColor: "rgb(255 153 0 / 15%)" }}>All The Products</h3>
-                {/* using an inline style with an object declared above */}
-               {/* <RequireAuth user={user}> */}
+                <h3>All The Products</h3>
                 <div style={cardContainerLayout}>
                     {productCards}
                 </div>
-                {/* </RequireAuth> */}
             </>
         )
 
