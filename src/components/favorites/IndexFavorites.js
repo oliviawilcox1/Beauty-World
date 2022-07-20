@@ -10,80 +10,65 @@ const cardContainerLayout = {
 }
 
 const IndexFavorites = (props) => {
-        const [favorites, setfavorites] = useState(null)
-        const [updated, setUpdated] = useState(false)
-        const { user, msgAlert } = props
-        const navigate = useNavigate()
-        useEffect(()=> {
-            getAllFavorites()
-                .then(res => {
-                    console.log('this is the res', res)
-                    setfavorites(res.data.favorites)
-                })
-                .then(()=> {
-                    msgAlert({
-                        heading:"Found Favorites",
-                        variant: 'success'
-                    })
-                })
-                .catch(() => 
-                    msgAlert({
-                        heading:"Uh Oh, something went wrong finding your favorites..",
-                        variant: 'danger'
-                    }))
-            },[updated])
+    const [favorites, setfavorites] = useState(null)
+    const [updated, setUpdated] = useState(false)
+    const { user, msgAlert } = props
+    const navigate = useNavigate()
+    useEffect(()=> {
+        getAllFavorites()
+            .then(res => {
+                setfavorites(res.data.favorites)
+            })
+            .catch(() => 
+                msgAlert({
+                    heading:"Uh Oh, something went wrong finding your favorites..",
+                    variant: 'danger'
+                }))
+        },[updated])
 
-        const removeTheFavorite = (favoriteId) => {
-            removeFavorite(user, favoriteId)
+    const removeTheFavorite = (favoriteId) => {
+        removeFavorite(user, favoriteId)
+        .then(() => {
+            msgAlert({
+                heading: 'Product removed from your favorites list!',
+                variant: 'success',
+            });
+            })
             .then(() => {
-                msgAlert({
-                  heading: 'product politely removed from favorites!',
-                  message: "they're gone",
-                  variant: 'success',
-                });
-              })
-              .then(() => {
-                setUpdated((prev) => !prev)
-                navigate(`/favorites`);
-              })
-              .catch(() => {
-                msgAlert({
-                  heading: 'something went wrong',
-                  message: 'that aint it',
-                  variant: 'danger',
-                });
-              });
-        }
-        
-        if (!favorites) {
-            return <p>loading...</p>
-        } else if (favorites.length === 0) {
-            return <p>no favorites yet, go add some</p>
-        }
+            setUpdated((prev) => !prev)
+            navigate(`/favorites`);
+            })
+            .catch(error => console.log(error));
+    }
+    
+    if (!favorites) {
+        return <p>loading...</p>
+    } else if (favorites.length === 0) {
+        return <p>Add your favorites for them to be displayed here!</p>
+    }
 
-        let favoriteCards
 
-        if (favorites.length > 0) {
-            favoriteCards = favorites.map(favorite => (
-                <div key={favorite._id} style={{ width:'300px'}}>
-                    <Link to={`/products/${favorite.product._id}`} style={{overflowWrap: 'break-word'}} >{favorite.product.name}</Link>
+    let favoriteCards
+    if (favorites.length > 0) 
+        {
+        favoriteCards = favorites.map(favorite => (
+            <div key={favorite._id} style={{ width:'300px'}}>
+                <Link to={`/products/${favorite.product._id}`} style={{overflowWrap: 'break-word'}} > {favorite.product.name} </Link>
                     <img src={`${favorite.product.image}`} style={{ height: '200px'}} class='img-thumbnail' />
                     <p>$ {favorite.product.price}</p>
-                    <button onClick={() => removeTheFavorite(favorite._id)}>Remove from Favorites</button>
-                </div>
-            ))
-        }
+                <button onClick={() => removeTheFavorite(favorite._id)}>Remove from Favorites</button>
+            </div>
+        ))
+    }
 
-        return(
-            <>
-                <h3>Your Favorites :)</h3>
-                {/* using an inline style with an object declared above */}
-                <div style={cardContainerLayout}>
-                    {favoriteCards}
-                </div>
-            </>
-        )
-
+    return (
+        <>
+            <h3>Your Favorites </h3>
+            <div style={cardContainerLayout}>
+                {favoriteCards}
+            </div>
+        </>
+    )
 }
 
 export default IndexFavorites
