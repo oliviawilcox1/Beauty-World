@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { getAllProducts } from '../../api/products'
 import { Link } from 'react-router-dom'
 
-
 const cardContainerLayout = {
     display: 'flex',
     justifyContent: 'space-between',
