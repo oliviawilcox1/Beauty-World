@@ -5,12 +5,12 @@ export const getAllProducts = () => {
     return axios(`${apiUrl}/products`)
 }
 
-// show function 
+// SHOW -> get by id
 export const getOneProduct = (productId) => {
     return axios(`${apiUrl}/products/${productId}`)
 }
 
-// post -> create 
+// POST -> create 
 export const createProduct = (user, newProduct) => {
     return axios({
         url: `${apiUrl}/products`,
@@ -24,8 +24,6 @@ export const createProduct = (user, newProduct) => {
 
 // PATCH -> update function
 export const updateProduct = (user, updatedProduct) => {
-    console.log('user', user)
-    console.log('this is newProduct', updatedProduct)
     return axios({
         url: `${apiUrl}/products/${updatedProduct._id}`,
         method: 'PATCH',
@@ -38,7 +36,6 @@ export const updateProduct = (user, updatedProduct) => {
 
 // DELETE -> remove function
 export const removeProduct = (user, productId) => {
-    console.log('user', user)
     return axios({
         url: `${apiUrl}/products/${productId}`,
         method: 'DELETE',
