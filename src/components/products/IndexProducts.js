@@ -66,7 +66,7 @@ const IndexProducts = (props) => {
         if (!products) {
             return <p>loading...</p>
         } else if (products.length === 0) {
-            return <p>no pets yet, go add some</p>
+            return <p>no products yet, go add some</p>
         }
 
         let productCards
