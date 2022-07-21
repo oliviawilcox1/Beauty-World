@@ -4,6 +4,13 @@ import { signIn } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom'
+
+const linkStyle = {
+    color: 'black',
+    textDecoration: 'none',
+  };
+
 
 const SignIn = (props) => {
 	// constructor(props) {
@@ -42,7 +49,7 @@ const SignIn = (props) => {
 return (
     <div className='row'>
         <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-            <h3>Sign In</h3>
+            <h3>Log In:</h3>
             <Form onSubmit={onSignIn}>
                 <Form.Group controlId='email'>
                     <Form.Label>Email address</Form.Label>
@@ -66,10 +73,16 @@ return (
                         onChange={e => setPassword(e.target.value)}
                     />
                 </Form.Group>
-                <Button variant='dark' type='submit'>
+           
+                <button class="button-51" role="button" type='submit'>
                     Submit
-                </Button>
+                </button>
+                
             </Form>
+           <span>
+            <h4>Don't have an account? </h4>
+                <Link to="/sign-up" style={linkStyle}> Sign Up Here! </Link>
+            </span> 
         </div>
     </div>
 )}

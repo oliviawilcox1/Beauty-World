@@ -31,46 +31,40 @@ const authenticatedOptions = (
   </>
 );
 
-const unauthenticatedOptions = (
-  <>
-    <Nav.Item className="m-2">
-      <Link to="sign-up" style={linkStyle}>
-        Sign Up
-      </Link>
-    </Nav.Item>
-    <Nav.Item className="m-2">
-      <Link to="sign-in" style={linkStyle}>
-        Sign In
-      </Link>
-    </Nav.Item>
-  </>
-);
+
 
 const alwaysOptions = (
   <>
-    <Nav.Link >
-      <Link to="/" style={linkStyle}>
-        Home
-      </Link>
-    </Nav.Link>
+<div class="container-fluid">
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li><a id="len1" class="hoverable" style={linkStyle} href="/">Home</a></li>
+        <li><a id="len2" class="hoverable" style={linkStyle} href="/">About</a></li>
+
+        <li><a id="len4" class="hoverable" style={linkStyle} href="/sign-in">Log In</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div id="what-the-hell-is-this">
+    <div class="page-title">
+      <h2>BeautyLand</h2>
+    </div>
+  </div>
+</div>
   </>
 );
 
 const Header = ({ user }) => (
-  <Navbar bg="black" variant="dark" expand="sm">
-    <Navbar.Brand>
-      <Link to="/" style={linkStyle}>
-        Winter Spaceship Store
-      </Link>
-    </Navbar.Brand>
+
+  <Navbar class ="nav" bg="black" variant="dark" expand="sm">
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">
         {user && (
           <span className="navbar-text mr-2">Welcome, {user.email}</span>
         )}
-        {alwaysOptions}
-        {user ? authenticatedOptions : unauthenticatedOptions}
+        {user ? authenticatedOptions : alwaysOptions}
       </Nav>
     </Navbar.Collapse>
   </Navbar>

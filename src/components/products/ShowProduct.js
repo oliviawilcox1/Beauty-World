@@ -114,14 +114,14 @@ try{
           <h1>{product.name}</h1>
             <img src={`${product.image}`} alt="" style={{ height: '200px' }} class="img-thumbnail" />
             <p>Description: {product.description}</p>
-            <p>Price: {product.price}</p>
-            <p>Category: {product.category}</p>
-            <small>Available: {product.available ? 'yes' : 'no'}</small> <br/>
+            {/* <p>Price: {product.price}</p>
+            <p>Category: {product.category}</p> */}
+            {/* <small>Available: {product.available ? 'yes' : 'no'}</small> <br/> */}
 
-            <button style={{ borderRadius:'30px'}} onClick={() => removeTheProduct()}>Delete Product</button>
-            <button style={{ borderRadius:'30px'}} onClick={() => setModalOpen(true)}>Edit Product</button>
-            <button style={{ borderRadius:'30px'}} onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button>
-            <button style={{ borderRadius:'30px', display: hidden ? 'none' : 'block'}} onClick={() => addFavorite()}>Add to Favorites</button>              
+            <button  class="button-51" role="button" style={{ borderRadius:'30px'}} onClick={() => removeTheProduct()}>Delete Product</button>
+            <button  class="button-51" role="button" style={{ borderRadius:'30px'}} onClick={() => setModalOpen(true)}>Edit Product</button>
+            <button  class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button>
+            <button  class="button-51" role="button" style={{ borderRadius:'30px', display: hidden ? 'none' : 'block'}} onClick={() => addFavorite()}>Add to Favorites</button>              
             <p> {reviewCards}</p> 
           
           <EditProductModal
@@ -159,12 +159,12 @@ if(user)
         <h1>{product.name}</h1>
           <img src={`${product.image}`} alt="" style={{ height: '200px' }} class="img-thumbnail" />
             <p>Description: {product.description}</p>
-            <p>Price: {product.price}</p>
-            <p>Category: {product.category}</p>
-          <small>Available: {product.available ? 'yes' : 'no'}</small>
+            {/* <p>Price: {product.price}</p> */}
+            {/* <p>Category: {product.category}</p> */}
+          {/* <small>Available: {product.available ? 'yes' : 'no'}</small> */}
         <button style={{ borderRadius:'30px', display: hidden ? 'none' : 'block'}} onClick={() => addFavorite()}>Add to Favorites</button> 
-        <button onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button> 
-        
+        <button class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button> 
+  
         <p> {reviewCards}</p> 
 
         <EditProductModal
@@ -197,10 +197,10 @@ return (
         <h1>{product.name}</h1>
           <img src={`${product.image}`} alt="" class="img-thumbnail" />
             <p>Description: {product.description}</p>
-            <p>Price: {product.price}</p>
+            {/* <p>Price: {product.price}</p>
             <p>Category: {product.category}</p>
-          <small>Available: {product.available ? 'yes' : 'no'}</small>
-        <button onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button>
+          <small>Available: {product.available ? 'yes' : 'no'}</small> */}
+        <button  class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Leave A Review!</button>
         
         <p> {reviewCards}</p> 
 
