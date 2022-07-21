@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 const linkStyle = {
-  color: 'white',
+  color: 'black',
   textDecoration: 'none',
 };
 const authenticatedOptions = (
@@ -35,39 +35,31 @@ const authenticatedOptions = (
 
 const alwaysOptions = (
   <>
-<div class="container-fluid">
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li><a id="len1" class="hoverable" style={linkStyle} href="/">Home</a></li>
-        <li><a id="len2" class="hoverable" style={linkStyle} href="/">About</a></li>
 
-        <li><a id="len4" class="hoverable" style={linkStyle} href="/sign-in">Log In</a></li>
-      </ul>
-    </div>
-  </nav>
-  <div id="what-the-hell-is-this">
-    <div class="page-title">
-      <h2>BeautyLand</h2>
+  <a>Home</a>
+  <div class="dropdown"><button class="dropbtn">Categories</button>
+    <div class="dropdown-content">
+      <a>Skincare</a>
+      <a>Haircare</a>
+      <a>Fragrance</a>
+      <a>Make</a>
     </div>
   </div>
-</div>
+  <a></a>
+  <a>About Me</a>
+  <a>Log In</a>
+
   </>
 );
 
 const Header = ({ user }) => (
 
-  <Navbar class ="nav" bg="black" variant="dark" expand="sm">
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="ml-auto">
+  <div class="navbar">
         {user && (
           <span className="navbar-text mr-2">Welcome, {user.email}</span>
         )}
         {user ? authenticatedOptions : alwaysOptions}
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>
+    </div>
 );
 
 export default Header;

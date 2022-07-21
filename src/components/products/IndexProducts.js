@@ -33,7 +33,6 @@ const IndexProducts = (props) => {
             <div key = {product.id} style = {{ width: '30%' }} className = "productCards">
                 <Link to = {`/products/${product._id}`}  className = "links"> {product.name}
                     <img src = {`${product.image}`}  class='img-thumbnail'/> </Link>
-                <p>$ {product.price}</p>
             </div>
         ))
     }
