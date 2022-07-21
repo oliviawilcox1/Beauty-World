@@ -76,6 +76,14 @@ body {
 }
 
 
+
+
+
+
+
+
+
+/* Working on NavBar Design */
 .navbar{
   background-color: white;
   display: flex;
@@ -85,11 +93,12 @@ body {
   line-height: 1.75rem;
   margin: .5em auto;
   font-size: 90%;
+  text-decoration: underline;
   
 }
 
 .navbar a {
- text-decoration: none;
+ text-decoration: underline;
 margin: 20px;
 font-weight: 200;
 font-size: 90%;
