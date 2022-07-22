@@ -14,7 +14,7 @@ const authenticatedOptions = (
           <a href="/makeup">Makeup</a>
         </div>
       </div>
-      <a href="/favorites"> Your Favorites <i class="fa-regular fa-heart"></i> </a>
+      <a href="/favorites" > Your Favorites <i class="fa-regular fa-heart"></i> </a>
       <a href="/sign-out">Log Out</a>
     </div>
   </>
