@@ -35,20 +35,21 @@ const authenticatedOptions = (
 
 const alwaysOptions = (
   <>
+  
+  <a class="Name" href="/"> <h2 class="title">Beauty World </h2> </a>
 
-  <a>Home</a>
-  <div class="dropdown"><button class="dropbtn">Categories</button>
+  <div class="together">
+  <div class="dropdown"><button class="dropbtn">Categories </button>
     <div class="dropdown-content">
       <a >Skincare</a>
       <a>Haircare</a>
       <a>Fragrance</a>
-      <a>Make</a>
+      <a>Makeup</a>
     </div>
   </div>
-  <a></a>
   <a>About Me</a>
-  <a href="/sign-in">Log In</a>
-
+  <a href="/sign-in">Log In   <i class="fa-regular fa-user"></i></a>
+  </div>
   </>
 );
 
