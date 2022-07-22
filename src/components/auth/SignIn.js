@@ -50,9 +50,10 @@ return (
     <div className='row'>
         <div className='col-sm-10 col-md-8 mx-auto mt-5'>
             <h3>LOG IN</h3>
+       
             <form onSubmit={onSignIn}>
-                <Form.Group controlId='email'>
                     <input
+                        class="signin"
                         required
                         type='email'
                         name='email'
@@ -60,9 +61,8 @@ return (
                         placeholder='Email'
                         onChange={e => setEmail(e.target.value)}
                     />
-                </Form.Group>
-                <Form.Group controlId='password'>
                     <input
+                    class="signin"
                         required
                         name='password'
                         value={password}
@@ -70,13 +70,12 @@ return (
                         placeholder='Password'
                         onChange={e => setPassword(e.target.value)}
                     />
-                </Form.Group>
-           
                 <button class="button-51" role="button" type='submit'>
                     SIGN IN
                 </button>
-                
+               
             </form>
+            
            <span>
             <a class="a" href="/sign-up">
                 <button class="button-52" role="button" type='submit'>
@@ -85,7 +84,8 @@ return (
             </a>
             </span> 
         </div>
-    </div>
+        </div>
+    
 )}
 
 export default SignIn
