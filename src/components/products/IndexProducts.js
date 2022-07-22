@@ -2,12 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { getAllProducts } from '../../api/products'
 import { Link } from 'react-router-dom'
 
-const cardContainerLayout = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    flexFlow: 'row wrap',
-}
-
 const IndexProducts = (props) => {
     const [products, setProducts] = useState(null)
     const { user, msgAlert } = props
@@ -30,21 +24,21 @@ const IndexProducts = (props) => {
     let productCards
     if (products.length > 0) {
         productCards = products.map(product => (
-            <div key = {product.id} style = {{ width: '30%' }} className = "productCards">
-                <Link to = {`/products/${product._id}`}  className = "links"> {product.name}
-                    <img src = {`${product.image}`}  class='img-thumbnail'/> </Link>
+            <div key = {product.id} class = "indexcards">
+                <a href=" {`/products/${product._id}`}"  class = "links"> <h5 class="productname">{product.name}</h5>
+                    <img src= {`${product.image}`}  class="imgthumbnail"/> </a> Ingredient Highlights {product.ingredienthighlights}
             </div>
         ))
     }
 
-        return(
-            <>
-            <h3>All The Products</h3>
-                <div style={cardContainerLayout}>
-                    {productCards}
-                </div>
-            </>
-        )
+    return(
+        <>
+        <h3 class="producttitle">All Of Our Top 2022 Beauty Picks</h3>
+            <div class="index">
+                {productCards}
+            </div>
+        </>
+    )
 }
 
 export default IndexProducts

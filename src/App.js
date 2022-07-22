@@ -2,7 +2,6 @@
 import React, { useState, Fragment } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
-
 // import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAlert';
 import Header from './components/shared/Header';
@@ -21,8 +20,8 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [msgAlerts, setMsgAlerts] = useState([]);
 
-  console.log('user in app', user);
-  console.log('message alerts', msgAlerts);
+  // console.log('user in app', user);
+  // console.log('message alerts', msgAlerts);
   const clearUser = () => {
     console.log('clear user ran');
     setUser(null);
@@ -41,9 +40,12 @@ const App = () => {
     });
   };
 
+
+
+
   return (
     <Fragment>
-      <Header user={user} />
+      <Header user={user}  />
       <Routes>
    
         <Route 

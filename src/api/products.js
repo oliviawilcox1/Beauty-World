@@ -4,7 +4,6 @@ import axios from 'axios'
 export const getAllProducts = () => {
     return axios(`${apiUrl}/products`)
 }
-
 // SHOW -> get by id
 export const getOneProduct = (productId) => {
     return axios(`${apiUrl}/products/${productId}`)
@@ -44,4 +43,3 @@ export const removeProduct = (user, productId) => {
         }
     })
 }
-

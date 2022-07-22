@@ -38,11 +38,6 @@ const SignIn = (props) => {
 			.catch((error) => {
                 setEmail('')
                 setPassword('')
-				msgAlert({
-					heading: 'Sign In Failed',
-					message: messages.signInFailure,
-					variant: 'danger',
-				})
 			})
 	}
 
@@ -62,7 +57,7 @@ return (
                         onChange={e => setEmail(e.target.value)}
                     />
                     <input
-                    class="signin"
+                     class="signin"
                         required
                         name='password'
                         value={password}
