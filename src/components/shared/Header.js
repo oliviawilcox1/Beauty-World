@@ -39,7 +39,7 @@ const alwaysOptions = (
   <a>Home</a>
   <div class="dropdown"><button class="dropbtn">Categories</button>
     <div class="dropdown-content">
-      <a>Skincare</a>
+      <a >Skincare</a>
       <a>Haircare</a>
       <a>Fragrance</a>
       <a>Make</a>
@@ -47,7 +47,7 @@ const alwaysOptions = (
   </div>
   <a></a>
   <a>About Me</a>
-  <a>Log In</a>
+  <a href="/sign-in">Log In</a>
 
   </>
 );

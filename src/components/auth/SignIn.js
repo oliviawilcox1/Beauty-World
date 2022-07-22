@@ -49,22 +49,20 @@ const SignIn = (props) => {
 return (
     <div className='row'>
         <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-            <h3>Log In:</h3>
+            <h3>Log In</h3>
             <Form onSubmit={onSignIn}>
                 <Form.Group controlId='email'>
-                    <Form.Label>Email address</Form.Label>
                     <Form.Control
                         required
                         type='email'
                         name='email'
                         value={email}
-                        placeholder='Enter email'
+                        placeholder='Email'
                         onChange={e => setEmail(e.target.value)}
                     />
                 </Form.Group>
                 <Form.Group controlId='password'>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
+                    <input
                         required
                         name='password'
                         value={password}
@@ -75,13 +73,16 @@ return (
                 </Form.Group>
            
                 <button class="button-51" role="button" type='submit'>
-                    Submit
+                    SIGN IN
                 </button>
                 
             </Form>
            <span>
-            <h4>Don't have an account? </h4>
-                <Link to="/sign-up" style={linkStyle}> Sign Up Here! </Link>
+            <a class="a" href="/sign-up">
+                <button class="button-52" role="button" type='submit'>
+                   CREATE AN ACCOUNT
+                </button>
+            </a>
             </span> 
         </div>
     </div>
