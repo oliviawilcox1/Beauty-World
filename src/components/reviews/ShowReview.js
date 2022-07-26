@@ -14,40 +14,32 @@ const ShowReviewModal = (props) => {
     }
 
 
-    const bodyStyle = {
-        backgroundColor: 'white',
-        width: "300px",
-    }
-    const cardHeaderStyle = {
-        backgroundColor: 'white',
-        width: "300px",
-    }
-
-    const cardStyle = {
-        width: "300px"
-    }
 
 
     return (
     <>
-        <Card className="m-2" style={cardStyle}>
-            <Card.Header style={cardHeaderStyle}> Rating: {review.rating} </Card.Header>
-            <Card.Body style = {bodyStyle}>
-                <small>{review.review}</small><br/>
+            <div class="review">
+                <div class="left">
+                    Owner: <span>{review.owner}</span>
+                    Rating: <span>{review.rating}</span>
+                </div>
+                <div class="right">
+                {review.review}
+                {/* <span>...Read More</span> */}
+            </div>
                 {
                     user && (user._id === review.owner) ?
                         <>
-                            <Button variant="warning" onClick={() => setShowEditModal(true)}>
+                            <button class="button-51" variant="warning" onClick={() => setShowEditModal(true)}>
                                 Edit Review
-                            </Button>
-                            <Button onClick={() => destroyReview()}variant="danger">
+                            </button>
+                            <button class="button-51"  onClick={() => destroyReview()}variant="danger">
                                 Delete Review
-                            </Button>
+                            </button>
                         </>
                     : null
                 }
-            </Card.Body>
-        </Card>
+       
         <EditReviewModal 
             user={user}
             product={product}
@@ -57,6 +49,7 @@ const ShowReviewModal = (props) => {
             msgAlert={msgAlert}
             triggerRefresh={triggerRefresh}
         />
+     </div>
     </>
     )
 }

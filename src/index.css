@@ -307,3 +307,15 @@ img {
   outline: none;
 }
 
+.review{
+  margin: 50px;
+  padding: 20px;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+
+  display: flex;
+  max-width: 100%;
+  white-space: none;
+  align-items: center;
+  justify-content: space-between;
+}

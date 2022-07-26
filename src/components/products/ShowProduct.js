@@ -28,6 +28,7 @@ const ShowProduct = (props) => {
   useEffect(() => {
     getOneProduct(id)
       .then((res) => {
+        console.log(res.data.product)
         setProduct(res.data.product)
         isFavorite()
       })
@@ -110,14 +111,10 @@ try{
       {
         return (
 
-        <body className='col-sm-10 col-md-8 mx-auto mt-5'>  
+        <>  
           <h1>{product.name}</h1>
-            <img src={`${product.image}`} alt="" style={{ height: '200px' }} class="img-thumbnail" />
+            <img src={`${product.image}`} alt=""  class="img-thumbnail" />
             <p>Description: {product.description}</p>
-            {/* <p>Price: {product.price}</p>
-            <p>Category: {product.category}</p> */}
-            {/* <small>Available: {product.available ? 'yes' : 'no'}</small> <br/> */}
-
             <button  class="button-51" role="button" style={{ borderRadius:'30px'}} onClick={() => removeTheProduct()}>Delete Product</button>
             <button  class="button-51" role="button" style={{ borderRadius:'30px'}} onClick={() => setModalOpen(true)}>Edit Product</button>
             <button  class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button>
@@ -141,7 +138,7 @@ try{
             triggerRefresh={() => setUpdated(prev => !prev)}
             handleClose={() => setReviewModalOpen(false)}
           />
-        </body>
+        </>
             )
        }
     }
@@ -157,11 +154,8 @@ if(user)
       <body className='col-lg-10 col-md-8 mx-auto mt-5'> 
 
         <h1>{product.name}</h1>
-          <img src={`${product.image}`} alt="" style={{ height: '200px' }} class="img-thumbnail" />
+          <img src={`${product.image}`} alt="" class="img-thumbnail" />
             <p>Description: {product.description}</p>
-            {/* <p>Price: {product.price}</p> */}
-            {/* <p>Category: {product.category}</p> */}
-          {/* <small>Available: {product.available ? 'yes' : 'no'}</small> */}
         <button style={{ borderRadius:'30px', display: hidden ? 'none' : 'block'}} onClick={() => addFavorite()}>Add to Favorites</button> 
         <button class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button> 
   
@@ -193,15 +187,110 @@ if(user)
 return (
 
       <>
+{/* 
 
-        <h1>{product.name}</h1>
-          <img src={`${product.image}`} alt="" class="img-thumbnail" />
-            <p>Description: {product.description}</p>
-            {/* <p>Price: {product.price}</p>
-            <p>Category: {product.category}</p>
-          <small>Available: {product.available ? 'yes' : 'no'}</small> */}
+
+            <section id="content2">
+              <div>
+                <h4>Ingredients We Love</h4>
+                <p>{product.ingredients}</p>
+
+                <div style="display: none;">
+                  <a href="" data-show-more>Show Full List of Ingredients</a>
+                </div>
+                <div style="display: block;">
+                  <h4> Full List of Ingredients</h4>
+                  <p>
+
+                  </p>
+                  <a href="" data-show-less>Show Less</a>
+                </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+      </div>
+  </div>
+  </div>
+</section> */}
+
+
+
+
+
+
+<div class="wrapper">
+<div class='left'>
+  <span>
+    <h1>{product.name}</h1>
+  </span>
+  <div>
+    <img src={`${product.image}`} alt="" class="img-thumbnail" />
+  </div>
+</div>
+
+<div class="right">
+    <div class="product-meta">
+        <h3 class="product-vendor">
+          <a href="/" >{product.brand}</a>
+        </h3>
+        <div class="review-stars">
+
+        </div>
+            <h4>{product.name}</h4>
+            <span>
+              <span>${product.price}</span>
+            </span>
+    </div>
+    <div class='description'>
+            <input id="tab1" type="radio" name='tabs'/>
+              <label for="tab1">Details</label>
+       
+            <input id="tab2" type="radio" name='tabs' />
+              <label for="tab2">Ingredients</label>
+       
+            <input id="tab3" type="radio" name='tabs' />
+              <label for="tab3">How to use</label>
+           </div>
+           <section id='content1'>
+              <div>
+                <p>
+                  {product.description}
+                </p>
+              </div>
+            </section>
+
+            <section id="content2">
+              <div>
+                <h4>Ingredients We Love</h4>
+                <p>{product.ingredients}</p>
+                <div>
+                  <a href="" data-show-more>Show Full List of Ingredients</a>
+                </div>
+                <div>
+                  <h4> Full List of Ingredients</h4>
+  
+                  <a href="" data-show-less>Show Less</a>
+                </div>
+              </div>
+            </section>
+</div>
+
+
         <button  class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Leave A Review!</button>
-        
+        <div>
+          <div class="stars">
+
+          </div>
+          {/* <div class="main-review">
+            <div>
+           
+           <span>...Read More</span>
+            </div>
+
+          </div> */}
+        </div>
         <p> {reviewCards}</p> 
 
         <EditProductModal
@@ -222,7 +311,8 @@ return (
           triggerRefresh={() => setUpdated(prev => !prev)}
           handleClose={() => setReviewModalOpen(false)}
           />
-      </>
+        </div>
+      </> 
   );
 };
 
