@@ -232,19 +232,19 @@ return (
 
 <div class="rightshow">
     <div class="product-meta">
-        <h3 class="product-vendor">
-          <a href="/" >{product.brand}</a>
-        </h3>
+        <h4 class="product-vendor">
+          <a  class="brandname" href="/" >{product.brand}</a>
+        </h4>
         <div class="review-stars">
 
         </div>
-            <h4>{product.name}</h4>
+            <h5 class="product-name">{product.name}</h5>
             <span>
               <span>${product.price}</span>
             </span>
     </div>
     <div class='description'>
-            <input id="tab1" type="radio" name='tabs'/>
+            <input id="tab1" type="radio" name='tabs'defaultChecked/>
               <label for="tab1">Details</label>
        
             <input id="tab2" type="radio" name='tabs' />
@@ -255,7 +255,7 @@ return (
            </div>
            <section id='content1'>
               <div>
-                <p>
+                <p class='desc'>
                   {product.description}
                 </p>
               </div>
