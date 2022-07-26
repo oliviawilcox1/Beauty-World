@@ -221,7 +221,7 @@ return (
 
 
 <div class="wrapper">
-<div class='left'>
+<div class='leftshow'>
   <span>
     <h1>{product.name}</h1>
   </span>
@@ -230,7 +230,7 @@ return (
   </div>
 </div>
 
-<div class="right">
+<div class="rightshow">
     <div class="product-meta">
         <h3 class="product-vendor">
           <a href="/" >{product.brand}</a>
@@ -268,31 +268,19 @@ return (
                 <div>
                   <a href="" data-show-more>Show Full List of Ingredients</a>
                 </div>
-                <div>
+                {/* <div>
                   <h4> Full List of Ingredients</h4>
   
                   <a href="" data-show-less>Show Less</a>
-                </div>
+                </div> */}
               </div>
             </section>
 </div>
+</div>
 
-
-        <button  class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Leave A Review!</button>
-        <div>
-          <div class="stars">
-
-          </div>
-          {/* <div class="main-review">
-            <div>
-           
-           <span>...Read More</span>
-            </div>
-
-          </div> */}
-        </div>
+        <button class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Leave A Review!</button>
         <p> {reviewCards}</p> 
-
+        
         <EditProductModal
           product={product}
           show={modalOpen}
@@ -311,7 +299,7 @@ return (
           triggerRefresh={() => setUpdated(prev => !prev)}
           handleClose={() => setReviewModalOpen(false)}
           />
-        </div>
+       
       </> 
   );
 };

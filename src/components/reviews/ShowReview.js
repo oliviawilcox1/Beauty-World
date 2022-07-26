@@ -13,17 +13,17 @@ const ShowReviewModal = (props) => {
             .catch((error) => console.log('ERROR IS: ', error))
     }
 
-
-
+   console.log(review.owner)
 
     return (
     <>
             <div class="review">
                 <div class="left">
-                    Owner: <span>{review.owner}</span>
-                    Rating: <span>{review.rating}</span>
+                    <h5>Owner: <span>{review.owner}</span><br/>
+                    Rating: <span>{review.rating}</span></h5>
                 </div>
                 <div class="right">
+                    <h4>{review.review.slice(0,15)}...</h4>
                 {review.review}
                 {/* <span>...Read More</span> */}
             </div>
