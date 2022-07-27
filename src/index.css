@@ -332,26 +332,29 @@ img {
 }
 .right{
   width: 70%;
-  align-self: center;
+  align-self: start;
   overflow-y: hidden;
 }
 
 .wrapper{
   display: flex;
   flex-direction: row;
-  align-items: stretch;
-  /* height: 500px; */
+  max-height: 80%;
+  margin-top: 0px;
 }
 
 .leftshow{
   width: 50%;
   margin: 0;
   padding: 15px;
+
 }
 
 .rightshow{
   width: 50%;
-  margin: auto;
+  margin: 0;
+  position: relative;
+
   /* padding-top: 1em;
   padding-bottom: 1em; */
 }
@@ -429,9 +432,12 @@ img {
   font-size: 21px;
   margin-bottom: 0%;
   color: black;
- 
   padding-bottom: 1em;
 }
 .nopadding{
   padding: 0em;
+}
+
+.product-meta{
+  align-items: start;
 }

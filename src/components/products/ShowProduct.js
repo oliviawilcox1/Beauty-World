@@ -211,34 +211,30 @@ return (
 </span>
 </div>
 <div class='description'>
-<input id="tab1" type="radio" name='tabs' defaultChecked/>
+<input id="tab1" type="radio" name='tabs' defaultChecked onClick={handleClick}/>
 <label for="tab1">Details</label>
 
 <input id="tab2" type="radio" name='tabs' onClick={handleClick}/>
 <label for="tab2"  >Ingredients</label>
-{isShown && (
-   <section id="content2" >
-   <div class="nopadding">
-   <h5>Ingredient Standouts </h5>
-   <p class='desc2'>{product. ingredienthighlights}.</p>
-    <div>
-   <a href="" data-show-more>See Full List of Ingredients</a>
-   </div> 
-   <div>
-   <h4 > Full List of Ingredients</h4>
-   <a href="" data-show-less>Show Less</a>
-   <p class="desc2">{product.ingredients}</p>
-   </div> 
-   </div>
-   </section>
-)}
-{/* <h4 > Full List of Ingredients</h4>
-<a href="" data-show-less>Show Less</a>
-<p class="desc2">{product.ingredients}</p> */}
-
-<input id="tab3" type="radio" name='tabs' />
+<input id="tab3" type="radio" name='tabs'onClick={handleClick} />
 <label for="tab3">How to use</label>
 </div>
+
+{isShown && (
+<div class="nopadding">
+  <h5>Ingredient Standouts </h5>
+  <p class='desc2'>{product. ingredienthighlights}.</p>
+    {/* <div>
+      <a href="" data-show-more>See Full List of Ingredients</a>
+    </div>  */}
+    <div>
+      <h4 > Full List of Ingredients</h4>
+      {/* <a href="" data-show-less>Show Less</a> */}
+      <p class="desc2">{product.ingredients}</p>
+    </div> 
+</div>
+)}
+
 <section id='content1' >
 <div>
 <p class='desc'>
@@ -247,27 +243,15 @@ return (
 </p>
 </div>
 </section>
-
-{/* <section id="content2" >
-<div class="nopadding">
-<h5>Ingredient Standouts </h5>
-<p class='desc2'>{product. ingredienthighlights}.</p>
- <div>
-<a href="" data-show-more>See Full List of Ingredients</a>
-</div> 
-<div>
-<h4 > Full List of Ingredients</h4>
-<a href="" data-show-less>Show Less</a>
-<p class="desc2">{product.ingredients}</p>
-</div> 
-</div>
-</section> */}
-
 </div>
 </div>
 <div>
+
+
 <button class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Leave A Review!</button>
 <p> {reviewCards}</p> 
+
+
 </div>       
 <EditProductModal
 product={product}
