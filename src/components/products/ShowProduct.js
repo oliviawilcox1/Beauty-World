@@ -8,9 +8,8 @@ import CreateReviewModal from '../reviews/CreateReviewModal';
 
 
 const cardContainerLayout = {
-  display: 'flex',
-  justifyContent: 'center',
-  flexFlow: 'row wrap',
+  display: 'hidden',
+  
 };
 
 
@@ -112,9 +111,12 @@ try{
         return (
 
         <>  
-          <h1>{product.name}</h1>
-            <img src={`${product.image}`} alt=""  class="img-thumbnail" />
-            <p>Description: {product.description}</p>
+       
+
+
+
+
+
             <button  class="button-51" role="button" style={{ borderRadius:'30px'}} onClick={() => removeTheProduct()}>Delete Product</button>
             <button  class="button-51" role="button" style={{ borderRadius:'30px'}} onClick={() => setModalOpen(true)}>Edit Product</button>
             <button  class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button>
@@ -151,11 +153,9 @@ try{
 if(user) 
   {
     return (
-      <body className='col-lg-10 col-md-8 mx-auto mt-5'> 
+      <body> 
 
-        <h1>{product.name}</h1>
-          <img src={`${product.image}`} alt="" class="img-thumbnail" />
-            <p>Description: {product.description}</p>
+      
         <button style={{ borderRadius:'30px', display: hidden ? 'none' : 'block'}} onClick={() => addFavorite()}>Add to Favorites</button> 
         <button class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button> 
   
@@ -187,120 +187,88 @@ if(user)
 return (
 
       <>
-{/* 
-
-
-            <section id="content2">
-              <div>
-                <h4>Ingredients We Love</h4>
-                <p>{product.ingredients}</p>
-
-                <div style="display: none;">
-                  <a href="" data-show-more>Show Full List of Ingredients</a>
-                </div>
-                <div style="display: block;">
-                  <h4> Full List of Ingredients</h4>
-                  <p>
-
-                  </p>
-                  <a href="" data-show-less>Show Less</a>
-                </div>
-              </div>
-            </section>
-          </div>
-
-        </div>
-      </div>
-  </div>
-  </div>
-</section> */}
-
-
-
-
-
-
 <div class="wrapper">
 <div class='leftshow'>
-  <span>
-    <h1>{product.name}</h1>
-  </span>
-  <div>
-    <img src={`${product.image}`} alt="" class="img-thumbnail" />
-  </div>
+<span>
+{product.category} / {product.name}
+</span>
+<div>
+<img src={`${product.image}`} alt=""  />
+</div>
 </div>
 
 <div class="rightshow">
-    <div class="product-meta">
-        <h4 class="product-vendor">
-          <a  class="brandname" href="/" >{product.brand}</a>
-        </h4>
-        <div class="review-stars">
+<div class="product-meta">
+<h4 class="product-vendor">
+<a  class="brandname" href="/" >{product.brand}</a>
+</h4>
+<div class="review-stars">
 
-        </div>
-            <h5 class="product-name">{product.name}</h5>
-            <span>
-              <span>${product.price}</span>
-            </span>
-    </div>
-    <div class='description'>
-            <input id="tab1" type="radio" name='tabs'defaultChecked/>
-              <label for="tab1">Details</label>
-       
-            <input id="tab2" type="radio" name='tabs' />
-              <label for="tab2">Ingredients</label>
-       
-            <input id="tab3" type="radio" name='tabs' />
-              <label for="tab3">How to use</label>
-           </div>
-           <section id='content1'>
-              <div>
-                <p class='desc'>
-                  {product.description}
-                </p>
-              </div>
-            </section>
+</div>
+<h5 class="product-name">{product.name}</h5>
+<span>
+<span>${product.price}</span>
+</span>
+</div>
+<div class='description'>
+<input id="tab1" type="radio" name='tabs'defaultChecked/>
+<label for="tab1">Details</label>
 
-            <section id="content2">
-              <div>
-                <h4>Ingredients We Love</h4>
-                <p>{product.ingredients}</p>
-                <div>
-                  <a href="" data-show-more>Show Full List of Ingredients</a>
-                </div>
-                {/* <div>
-                  <h4> Full List of Ingredients</h4>
-  
-                  <a href="" data-show-less>Show Less</a>
-                </div> */}
-              </div>
-            </section>
+<input id="tab2" type="radio" name='tabs' />
+<label for="tab2">Ingredients</label>
+
+<input id="tab3" type="radio" name='tabs' />
+<label for="tab3">How to use</label>
+</div>
+<section id='content1'>
+<div>
+<p class='desc'>
+  {product.description}<br/>
+  {product.size}
+</p>
+</div>
+</section>
+
+<section id="content2" >
+<div class="nopadding">
+<h5>Ingredient Standouts </h5>
+<p class='desc2'>{product. ingredienthighlights}.</p>
+ <div>
+<a href="" data-show-more>See Full List of Ingredients</a>
+</div> 
+<div  style={{ display: hidden ? 'none' : 'none'}}>
+<h4 > Full List of Ingredients</h4>
+<a href="" data-show-less>Show Less</a>
+<p class="desc2">{product.ingredients}</p>
+</div> 
+</div>
+</section>
 </div>
 </div>
+<div>
+<button class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Leave A Review!</button>
+<p> {reviewCards}</p> 
+</div>       
+<EditProductModal
+product={product}
+show={modalOpen}
+user={user}
+msgAlert={msgAlert}
+triggerRefresh={() => setUpdated((prev) => !prev)}
+updateProduct={updateProduct}
+handleClose={() => setModalOpen(false)}
+/>
 
-        <button class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Leave A Review!</button>
-        <p> {reviewCards}</p> 
-        
-        <EditProductModal
-          product={product}
-          show={modalOpen}
-          user={user}
-          msgAlert={msgAlert}
-          triggerRefresh={() => setUpdated((prev) => !prev)}
-          updateProduct={updateProduct}
-          handleClose={() => setModalOpen(false)}
-        />
+<CreateReviewModal
+product={product}
+show={reviewModalOpen}
+user={user}
+msgAlert={msgAlert}
+triggerRefresh={() => setUpdated(prev => !prev)}
+handleClose={() => setReviewModalOpen(false)}
+/>
 
-         <CreateReviewModal
-          product={product}
-          show={reviewModalOpen}
-          user={user}
-          msgAlert={msgAlert}
-          triggerRefresh={() => setUpdated(prev => !prev)}
-          handleClose={() => setReviewModalOpen(false)}
-          />
-       
-      </> 
+</> 
   );
 };
 

@@ -53,7 +53,11 @@ h2, h3 {
   border-style: none;
   border: 0 solid white;
 }
-
+img{
+  max-width: 60%;
+  padding: 1em;
+  margin: 2em;
+}
 .imgthumbnail {
   margin: auto;
   padding: 1.15em;
@@ -217,20 +221,21 @@ input::placeholder {
 .navbar{
   background-color: white;
   display: flex;
-  border: 1px solid #1d6276;
+  border-bottom: 1.5px solid #1d6276;
   justify-content: right;
   align-items: right;
   line-height: 1.75rem;
   margin: .5em auto;
   font-size: 90%;
   text-decoration: none;
+  position:sticky;
 }
 
 .navbar a {
 text-decoration: none;
 margin: 20px;
 font-weight: 200;
-font-size: 90%;
+font-size: 100%;
 color: black;
 cursor: pointer;
 }
@@ -240,14 +245,14 @@ cursor: pointer;
   background-color: inherit;
   font-size: inherit;
   font-weight: 200;
-  font-size: 90%;
+  font-size: 100%;
   cursor: pointer;
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
   background-color: inherit;
   font-weight: 300;
-  font-size: 90%;
+  font-size: 100%;
   color: black;
   
 }
@@ -255,7 +260,7 @@ cursor: pointer;
 .dropdown-content{
   display: none;
   font-weight: 200;
-  font-size: 90%;
+  font-size: 100%;
   position: absolute;
   z-index: 1;
   background-color: white;
@@ -268,13 +273,13 @@ cursor: pointer;
   display: block;
   text-align: left;
   font-weight: 100;
-  font-size: 90%;
+  font-size: 100%;
   
 }
 
 .dropdown-content a:hover {
   font-weight: 400;
-  font-size: 90%;
+  font-size: 100%;
 
  
 }
@@ -282,7 +287,7 @@ cursor: pointer;
 .dropdown:hover .dropdown-content {
   display: block;
   font-weight: 100;
-  font-size: 90%;
+  font-size: 100%;
 
 }
 
@@ -335,19 +340,20 @@ img {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  height: 500px;
+  /* height: 500px; */
 }
 
 .leftshow{
   width: 50%;
-  margin: auto;
+  margin: 0;
   padding: 15px;
 }
 
 .rightshow{
   width: 50%;
   margin: auto;
-  padding: 15px;
+  /* padding-top: 1em;
+  padding-bottom: 1em; */
 }
 
 /* Radio List */
@@ -370,7 +376,6 @@ img {
 .description label {
   display: inline-block;
   background-color: rgb(255, 255, 255);
-
   font-size: 100%;
   font-weight: 300;
   padding-top: 1em;
@@ -404,17 +409,29 @@ img {
   padding-top: 1em;
   padding-bottom: 1em;
   text-align: left;
-  font-weight: 400;
+  font-weight: 200;
   font-size: 36px;
   margin-bottom: 0%;
   color: black;
 }
 .desc{
   text-align: left;
-  font-weight: 400;
-  font-size: 20px;
+  font-weight: 300;
+  font-size: 21px;
   margin-bottom: 0%;
   color: black;
   padding-top: 1em;
   padding-bottom: 1em;
+}
+.desc2{
+  text-align: left;
+  font-weight: 300;
+  font-size: 21px;
+  margin-bottom: 0%;
+  color: black;
+ 
+  padding-bottom: 1em;
+}
+.nopadding{
+  padding: 0em;
 }

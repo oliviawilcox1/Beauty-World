@@ -17,6 +17,7 @@ const authenticatedOptions = (
       <a href="/favorites" > Your Favorites <i class="fa-regular fa-heart"></i> </a>
       <a href="/sign-out">Log Out</a>
     </div>
+    
   </>
 );
 
@@ -37,6 +38,7 @@ const alwaysOptions = (
      {/* <a>About Us</a> */}
       <a href="/sign-in">Log In   <i class="fa-regular fa-user"></i></a>
     </div>
+
   </>
 );
 
