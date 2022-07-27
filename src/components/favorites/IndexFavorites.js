@@ -28,12 +28,6 @@ const IndexFavorites = (props) => {
 
     const removeTheFavorite = (favoriteId) => {
         removeFavorite(user, favoriteId)
-        .then(() => {
-            msgAlert({
-                heading: 'Product removed from your favorites list!',
-                variant: 'success',
-            });
-            })
             .then(() => {
             setUpdated((prev) => !prev)
             navigate(`/favorites`);

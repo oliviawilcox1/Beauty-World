@@ -5,6 +5,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import EditProductModal from './EditProductModal';
 import ShowReview from '../reviews/ShowReview'
 import CreateReviewModal from '../reviews/CreateReviewModal';
+import ShowDescription from './ShowDescription'
+import ShowIngredients from './ShowIngredients';
 
 
 const ShowProduct = (props) => {
@@ -14,6 +16,9 @@ const ShowProduct = (props) => {
   const [updated, setUpdated] = useState(false);
   const [hidden, setHidden] = useState(false)
   const [isShown, setIsShown] = useState(false);
+  const [description, setDescription] = useState(false);
+  // const [ingredients, setIngredients] = useState(unchecked);
+  const [instructions, setInstructions] = useState(false);
   const { user, msgAlert } = props;
   const { id } = useParams();
   const navigate = useNavigate();
@@ -75,9 +80,13 @@ const addFavorite = () => {
     .catch(error => console.log(error))
   }
 
-  const handleClick = event => {
-    setIsShown(current => !current);
-  };
+const handleDescription = event => {
+  setDescription(current => !current);
+};
+  
+// const handleIngredients = event => {
+//   setIngredients(current => !current);
+// };
 
 
 
@@ -184,76 +193,66 @@ if(user)
 }
 
 
+
+
+
 return (
+<>
+  <div class="wrapper">
+    <div class='leftshow'>
+      <span>
+        {product.category} / {product.name}
+      </span>
+      <div>
+        <img src={`${product.image}`} alt=""  />
+      </div>
+    </div>
 
-      <>
-<div class="wrapper">
-<div class='leftshow'>
-<span>
-{product.category} / {product.name}
-</span>
-<div>
-<img src={`${product.image}`} alt=""  />
+  <div class="rightshow">
+    <div class="product-meta">
+      <h4 class="product-vendor">
+      <a  class="brandname" href="/" >{product.brand}</a>
+      </h4>
+      <div class="review-stars">
+      </div>
+      <h5 class="product-name">{product.name}</h5>
+      
+      <span>${product.price}</span>
+    </div>
+  <div class='description'>
+    <label for="tab1">
+      <input id="tab1" type="radio" name='tabs' onClick={handleDescription}/>
+      Details
+    </label>
+
+    <label for="tab2">
+      <input id="tab2" type="radio" name='tabs'  onClick={handleDescription} />
+      Ingredients
+    </label>
+
+    <label for="tab3">
+      <input id="tab3" type="radio" name='tabs'onClick={handleDescription}/>
+      How to use
+    </label>
+  </div>
+
+  {description && (
+  <ShowDescription product={product} user ={user}/>
+  )} 
+
+  {/* {ingredients === checked && (
+    <ShowIngredients product={product} user={user}/>
+  )} */}
+  </div>
 </div>
-</div>
-
-<div class="rightshow">
-<div class="product-meta">
-<h4 class="product-vendor">
-<a  class="brandname" href="/" >{product.brand}</a>
-</h4>
-<div class="review-stars">
-
-</div>
-<h5 class="product-name">{product.name}</h5>
-<span>
-<span>${product.price}</span>
-</span>
-</div>
-<div class='description'>
-<input id="tab1" type="radio" name='tabs' defaultChecked onClick={handleClick}/>
-<label for="tab1">Details</label>
-
-<input id="tab2" type="radio" name='tabs' onClick={handleClick}/>
-<label for="tab2"  >Ingredients</label>
-<input id="tab3" type="radio" name='tabs'onClick={handleClick} />
-<label for="tab3">How to use</label>
-</div>
-
-{isShown && (
-<div class="nopadding">
-  <h5>Ingredient Standouts </h5>
-  <p class='desc2'>{product. ingredienthighlights}.</p>
-    {/* <div>
-      <a href="" data-show-more>See Full List of Ingredients</a>
-    </div>  */}
-    <div>
-      <h4 > Full List of Ingredients</h4>
-      {/* <a href="" data-show-less>Show Less</a> */}
-      <p class="desc2">{product.ingredients}</p>
-    </div> 
-</div>
-)}
-
-<section id='content1' >
-<div>
-<p class='desc'>
-  {product.description}<br/>
-  {product.size}
-</p>
-</div>
-</section>
-</div>
-</div>
-<div>
+  
+  <div>
+    <button class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Leave A Review!</button>
+    <p> {reviewCards}</p> 
+  </div>   
 
 
-<button class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Leave A Review!</button>
-<p> {reviewCards}</p> 
-
-
-</div>       
-<EditProductModal
+{/* <EditProductModal
 product={product}
 show={modalOpen}
 user={user}
@@ -261,7 +260,7 @@ msgAlert={msgAlert}
 triggerRefresh={() => setUpdated((prev) => !prev)}
 updateProduct={updateProduct}
 handleClose={() => setModalOpen(false)}
-/>
+/> */}
 
 <CreateReviewModal
 product={product}

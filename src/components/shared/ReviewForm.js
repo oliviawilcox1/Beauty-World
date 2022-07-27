@@ -23,12 +23,6 @@ const ReviewForm = (props) => {
                     name='rating'
                     onChange={handleChange}
                 />
-                {/* <Form.Select aria-label="toy condition" name="condition" defaultValue={toy.condition} onChange={handleChange}>
-                    <option>Open this select menu</option>
-                    <option value="new">new</option>
-                    <option value="used">used</option>
-                    <option value="disgusting">disgusting</option>
-                </Form.Select> */}
                 <Button type='submit'>Submit</Button>
             </Form>
         </Container>

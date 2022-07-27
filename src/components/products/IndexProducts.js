@@ -42,17 +42,16 @@ const IndexProducts = (props) => {
         <>
 
         <div class="together">
-<h4 class='button-51'> Newly Added </h4>
-<h4 class='button-51'> Heavenly Scents </h4>
-<h4 class='button-51'> Under $20 </h4>
-<h4 class='button-51'> K-Beauty </h4>
+            <h4 class='button-51'> Newly Added </h4>
+            <h4 class='button-51'> Heavenly Scents </h4>
+            <h4 class='button-51'> Under $20 </h4>
+            <h4 class='button-51'> K-Beauty </h4>
         </div>
 
 
         <h1 class="button-52">Top 2022 Beauty Picks</h1>
             <div class="index">
                 {productCards}
-            
             </div>
         </>
     )
