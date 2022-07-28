@@ -26,7 +26,6 @@ const ShowProduct = (props) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-
   useEffect(() => {
     getOneProduct(id)
       .then((res) => {
@@ -154,10 +153,10 @@ try{
 
 
 
-            <button  class="button-51" role="button" style={{ borderRadius:'30px'}} onClick={() => removeTheProduct()}>Delete Product</button>
-            <button  class="button-51" role="button" style={{ borderRadius:'30px'}} onClick={() => setModalOpen(true)}>Edit Product</button>
-            <button  class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button>
-            <button  class="button-51" role="button" style={{ borderRadius:'30px', display: hidden ? 'none' : 'block'}} onClick={() => addFavorite()}>Add to Favorites</button>              
+            <button  className="button-51" role="button" style={{ borderRadius:'30px'}} onClick={() => removeTheProduct()}>Delete Product</button>
+            <button  className="button-51" role="button" style={{ borderRadius:'30px'}} onClick={() => setModalOpen(true)}>Edit Product</button>
+            <button  className="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button>
+            <button  className="button-51" role="button" style={{ borderRadius:'30px', display: hidden ? 'none' : 'block'}} onClick={() => addFavorite()}>Add to Favorites</button>              
             <p> {reviewCards}</p> 
           
           <EditProductModal
@@ -192,8 +191,8 @@ if(user)
   {
     return (
       <> 
-  <div class="wrapper">
-    <div class='leftshow'>
+  <div className="wrapper">
+    <div className='leftshow'>
       <span>
         {product.category} / {product.name}
       </span>
@@ -202,18 +201,18 @@ if(user)
       </div>
     </div>
 
-  <div class="rightshow">
-    <div class="product-meta">
-      <h4 class="product-vendor">
-        <a class="brandname" href="/" >{product.brand}</a>
+  <div className="rightshow">
+    <div className="product-meta">
+      <h4 className="product-vendor">
+        <a className="brandname" href="/" >{product.brand}</a>
       </h4>
-      <div class="review-stars">
+      <div className="review-stars">
       </div>
-      <h5 class="product-name">{product.name}</h5>
+      <h5 className="product-name">{product.name}</h5>
       
       <span>${product.price}</span>
     </div>
-  <div class='description'>
+  <div className='description'>
     <label for="tab1">
       <input id="tab1" type="radio" name='tabs' defaultChecked onClick={handleDescription}/>
       Details
@@ -246,7 +245,7 @@ if(user)
 </div>
   
   <div>
-    <button class="button-51" role="button" onClick={() => setReview(true)}>Leave A Review!</button>
+    <button className="button-51" role="button" onClick={() => setReview(true)}>Leave A Review!</button>
     {review && (
       <ReviewForm 
         product={product}
@@ -260,13 +259,11 @@ if(user)
 
 )}
 
-
-    <p> {reviewCards}</p> 
   </div>   
 
       
         <button style={{ borderRadius:'30px', display: hidden ? 'none' : 'block'}} onClick={() => addFavorite()}>Add to Favorites</button> 
-        <button class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button> 
+        <button className="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Give a Product Review?</button> 
   
         <p> {reviewCards}</p> 
 
@@ -298,8 +295,8 @@ if(user)
 
 return (
 <>
-  <div class="wrapper">
-    <div class='leftshow'>
+  <div className="wrapper">
+    <div className='leftshow'>
       <span>
         {product.category} / {product.name}
       </span>
@@ -308,14 +305,14 @@ return (
       </div>
     </div>
 
-  <div class="rightshow">
-    <div class="product-meta">
-      <h4 class="product-vendor">
-        <a class="brandname" href="/" >{product.brand}</a>
+  <div className="rightshow">
+    <div className="product-meta">
+      <h4 className="product-vendor">
+        <a className="brandname" href="/" >{product.brand}</a>
       </h4>
-      <div class="review-stars">
+      <div className="review-stars">
       </div>
-      <h5 class="product-name">{product.name}</h5>
+      <h5 className="product-name">{product.name}</h5>
       
       <span>${product.price}</span>
     </div>
@@ -348,11 +345,13 @@ return (
     <ShowInstructions product={product} user={user}/>
   )}
 
+    <p> {reviewCards}</p> 
+
   </div>
 </div>
   
   <div>
-    <button class="button-51" role="button" onClick={() => setReview(true)}>Leave A Review!</button>
+    <button className="button-51" role="button" onClick={() => setReview(true)}>Leave A Review!</button>
     {review && (
       <ReviewForm 
         product={product}
