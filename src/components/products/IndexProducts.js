@@ -88,13 +88,18 @@ const IndexProducts = (props) => {
 
     return(
         <>
-        <div className="together">
-            <h4 className='button-51'> Newly Added </h4>
-            <h4 className='button-51'> Heavenly Scents </h4>
-            <h4 className='button-51'> Under $20 </h4>
-            <h4 className='button-51'> K-Beauty </h4>
+        
+        <div className="container">
+       
+            <h2 className="filter">Top 2022 Beauty Picks</h2>
         </div>
-        <h1 className="button-52">Top 2022 Beauty Picks</h1>
+
+        <div className="together">
+            <a className= "links" href="/products/price"><h4 className='button-51'> Newly Added </h4></a>
+            <a className= "links" href="/products/fragrance"> <h4 className='button-51'> Heavenly Scents </h4></a>
+            <a className= "links" href="/products/price"><h4 className='button-51'> Under $20 </h4></a>
+            <a className= "links" href="/products/kbeauty"> <h4 className='button-51'> Best of K-Beauty </h4></a>
+        </div>
             <div className="index">
                 {productCards}
             </div>

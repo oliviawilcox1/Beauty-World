@@ -17,53 +17,48 @@ h2, h3 {
 #brandname {
   text-align: center;
   font-weight: 600;
-  font-size: 100%;
+  font-size: 125%;
   margin-bottom: 0%;
   
 }
 .producttitle{
   font-weight: 400;
-  font-size: 150%;
+  font-size: 200%;
 }
 .productname {
   text-align: left;
   font-weight: 300;
-  font-size: 95%;
+  font-size: 100%;
 }
 
 .index {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+
   align-content: center;
   flex-wrap: wrap;
+  margin: auto;
   text-align: center;
-  white-space: none;
   width: 100%;
-  height: 90%;
-  margin: 0px;
-  /* max-width: 250px;
-  max-height: 60px; */
+  height: 100%;
+  margin: 10px;
   border-style: none;
 }
 .indexcards {
   border: 0 solid white;
-  width: 30%;
+  width: 25%;
   margin: auto;
   padding: 1.15em;
   border-style: none;
   border: 0 solid white;
 }
-img{
-  max-width: 60%;
-  padding: 1em;
-  margin: 2em;
-}
+
 .imgthumbnail {
   margin: auto;
-  padding: 1.15em;
+  padding: 1.2em;
   border-style: none;
   border: 0 solid white;
-  max-width: 400px;
+  max-width: 375px;
   max-height: 400px;
 } 
 
@@ -71,6 +66,7 @@ img{
   text-decoration: none;
   color: black;
   font-weight: 300;
+  width: 700%;
 }
 
 .links:hover {
@@ -226,7 +222,7 @@ input::placeholder {
   align-items: right;
   line-height: 1.75rem;
   margin: .5em auto;
-  font-size: 90%;
+  font-size: 100%;
   text-decoration: none;
   position:sticky;
 }
@@ -234,7 +230,7 @@ input::placeholder {
 .navbar a {
 text-decoration: none;
 margin: 20px;
-font-weight: 200;
+font-weight: 300;
 font-size: 100%;
 color: black;
 cursor: pointer;
@@ -244,7 +240,7 @@ cursor: pointer;
   border: none;
   background-color: inherit;
   font-size: inherit;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 100%;
   cursor: pointer;
 }
@@ -259,7 +255,7 @@ cursor: pointer;
 
 .dropdown-content{
   display: none;
-  font-weight: 200;
+  font-weight: 300;
   font-size: 100%;
   position: absolute;
   z-index: 1;
@@ -272,7 +268,7 @@ cursor: pointer;
   text-decoration: none;
   display: block;
   text-align: left;
-  font-weight: 100;
+  font-weight: 300;
   font-size: 100%;
   
 }
@@ -485,4 +481,11 @@ text-align: center;
     font-weight: 400;
     font-size: 400%;
     margin: 20px auto;
+}
+
+.container{
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -17,7 +17,21 @@ const ShowBodycare = (props) => {
         if (!bodycare) {
             return <h3>loading...</h3>
         } else if (bodycare.length === 0) {
-            return <p>No Products Currently. Please Check Back Later!</p>
+            return <>
+            <div className="container">
+                <h2 className="filter">All Skincare</h2>
+            </div>
+            <div className="together">
+                <h4 className='button-51'> Body Wash </h4>
+                <h4 className='button-51'> Bath Products </h4>
+                <h4 className='button-51'> Exfoliant </h4>
+                <h4 className='button-51'> Body Lotion </h4>
+                <h4 className='button-51'> Body Oils </h4>
+            </div>
+            <div className="index">
+           <h2 style={{ margin: "100px"}}>We are working on getting you some great recommendations! </h2>
+            </div>
+           </>
         }
 
 
@@ -25,7 +39,7 @@ const ShowBodycare = (props) => {
         if (bodycare.length > 0) {
             bodycareCards = bodycare.map(bodycares => (
                 <div key={bodycares.id} >
-                    <a href={`products/${bodycares._id}`}  className = "links"> 
+                    <a href={`/products/${bodycares._id}`}  className = "links"> 
                         <img src= {`${bodycares.image}`}  className="imgthumbnail"/> <h5 id="brandname">{bodycares.brand}</h5><span className="productname">{bodycares.name}</span></a> 
                 </div>
             ))
@@ -34,7 +48,9 @@ const ShowBodycare = (props) => {
 
     return (
        <>
-        <h2 className="filter">All Skincare</h2>
+        <div className="container">
+            <h2 className="filter">All Skincare</h2>
+        </div>
         <div className="together">
             <h4 className='button-51'> Shampoo </h4>
             <h4 className='button-51'> Conditioner </h4>
@@ -43,7 +59,7 @@ const ShowBodycare = (props) => {
             <h4 className='button-51'> Treatments </h4>
         </div>
         <div className="index">
-        {bodycareCards}
+            {bodycareCards}
         </div>
        </>
 )};

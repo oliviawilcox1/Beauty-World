@@ -67,4 +67,7 @@ export const getAllKBeauty = () => {
     return axios(`${apiUrl}/products/kbeauty`)
 }
 
+export const getAllUnderTwenty = () => {
+    return axios(`${apiUrl}/products/price`)
+}
 

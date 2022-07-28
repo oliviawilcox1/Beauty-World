@@ -20,6 +20,8 @@ import ShowHaircare from './components/filters/ShowHaircare';
 import ShowFragrance from './components/filters/ShowFragrance';
 import ShowMakeup from './components/filters/ShowMakeup';
 import ShowBodycare from './components/filters/ShowBodycare';
+import ShowKbeauty from './components/filters/ShowKbeauty';
+import ShowUnderTwenty from './components/filters/ShowUnderTwenty';
 
 
 const App = () => {
@@ -105,6 +107,18 @@ const App = () => {
         path="/products/bodycare"
         element={
         <ShowBodycare msgAlert={msgAlert} user={user} />
+        }
+        /> 
+        <Route
+        path="/products/kbeauty"
+        element={
+        <ShowKbeauty msgAlert={msgAlert} user={user} />
+        }
+        /> 
+         <Route
+        path="/products/price"
+        element={
+        <ShowUnderTwenty msgAlert={msgAlert} user={user} />
         }
         /> 
         <Route

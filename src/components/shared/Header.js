@@ -8,11 +8,11 @@ const authenticatedOptions = (
      {/* <a>About Us</a> */}
       <div className="dropdown"><button className="dropbtn">Shoy By Category </button>
         <div className="dropdown-content">
-        <a href="/products/skincare">Skincare</a>
         <a href="/products/bodycare">Bodycare</a>
-        <a href="/products/haircare">Haircare</a>
         <a href="/products/fragrance">Fragrance</a>
+        <a href="/products/haircare">Haircare</a>
         <a href="/products/makeup">Makeup</a>
+        <a href="/products/skincare">Skincare</a>
         </div>
       </div>
       <a href="/favorites" > Your Favorites <i className="fa-regular fa-heart"></i> </a>
@@ -29,11 +29,11 @@ const alwaysOptions = (
       <div className="together">
         <div className="dropdown"><button className="dropbtn">Shop By Category </button>
           <div className="dropdown-content">
-          <a href="/products/skincare">Skincare</a>
-          <a href="/products/bodycare">Bodycare</a>
-          <a href="/products/haircare">Haircare</a>
-          <a href="/products/fragrance">Fragrance</a>
-          <a href="/products/makeup">Makeup</a>
+            <a href="/products/bodycare">Bodycare</a>
+            <a href="/products/fragrance">Fragrance</a>
+            <a href="/products/haircare">Haircare</a>
+            <a href="/products/makeup">Makeup</a>
+            <a href="/products/skincare">Skincare</a>
         </div>
       </div>
      {/* <a>About Us</a> */}
