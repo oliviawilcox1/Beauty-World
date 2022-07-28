@@ -30,7 +30,9 @@ h2, h3 {
   font-weight: 300;
   font-size: 100%;
 }
+img{
 
+}
 .index {
   display: flex;
   justify-content: space-between;
@@ -308,6 +310,7 @@ cursor: pointer;
 img {
   border:none;
   outline: none;
+  max-width: 80%;
 }
 
 .review{
@@ -428,7 +431,9 @@ img {
   font-weight: 300;
   font-size: 21px;
   margin-bottom: 0%;
+  margin-right: 10%;
   color: black;
+  width: fit-content;
   padding-top: 1em;
   padding-bottom: 1em;
 }
@@ -488,4 +493,16 @@ text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.showlink{
+  text-decoration: none;
+  color: black;
+  width: 700%;
+}
+
+.showlink:hover {
+  text-decoration: underline;
+  color: black;
+  width: 700%;
 }

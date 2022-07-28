@@ -294,7 +294,7 @@ return (
     <div className="wrapper">
       <div className='leftshow'>
         <span>
-          {product.category} / {product.name}
+        <a href={`/products/${product.category}`} className = "showlink"> {product.category}</a> / {product.name}
         </span>
         <div>
           <img src={`${product.image}`} alt=""  />
