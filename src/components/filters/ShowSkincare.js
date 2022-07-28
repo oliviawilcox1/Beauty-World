@@ -31,7 +31,14 @@ const ShowSkincare = (props) => {
 
     return (
        <>
-       <h2 >All Skincare</h2>
+       <h2 className="filter">All Skincare</h2>
+       <div className="together">
+            <h4 className='button-51'> Cleanser </h4>
+            <h4 className='button-51'> Toner/Essence </h4>
+            <h4 className='button-51'> Serums </h4>
+            <h4 className='button-51'> Moisturizers </h4>
+            <h4 className='button-51'> Treatments </h4>
+        </div>
        <div className="index">
        {skincareCards}
        </div>
