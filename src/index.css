@@ -298,9 +298,11 @@ cursor: pointer;
 }
 .signin{
   display: block;
+  text-align: center;
   margin: 20px auto;
   position: relative;
 }
+
 .signup{
   display: block;
   margin: 15px auto;
@@ -389,6 +391,7 @@ img {
 
 .description input[type="radio"]:checked + label {
   font-weight: 500;
+  text-decoration: underline;
 }
 
 .description label:hover {
@@ -432,12 +435,47 @@ img {
   font-size: 21px;
   margin-bottom: 0%;
   color: black;
+  padding-top: 1em;
   padding-bottom: 1em;
 }
-.nopadding{
-  padding: 0em;
+.desc3{
+  text-align: left;
+  font-weight: 400;
+  font-size: 21px;
+  margin-bottom: 0%;
+  color: black;
+  text-decoration: underline;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  cursor: pointer;
+}
+.review{
+  outline: none;
+  background-color: white;
+  border: .5px solid #000000;
+  box-sizing: border-box;
+  color:  #000000;
+  font-size: 90%;
+  font-weight: 300;
+  padding: 1em;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.reviewform{
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
 }
 
 .product-meta{
   align-items: start;
+}
+
+.login{
+  text-align: center;
 }

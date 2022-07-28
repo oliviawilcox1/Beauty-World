@@ -65,7 +65,9 @@ const App = () => {
         />
         <Route
           path="/products/:id"
-          element={<ShowProduct msgAlert={msgAlert} user={user} />}
+          element={
+          <ShowProduct msgAlert={msgAlert} user={user} />
+        }
         />
         <Route
           path="/sign-out"

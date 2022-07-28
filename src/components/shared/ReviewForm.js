@@ -4,28 +4,30 @@ import { Form, Container, Button } from 'react-bootstrap'
 const ReviewForm = (props) => {
     
     const { user, review, handleChange, handleSubmit, heading} = props
-    console.log('USER', user)
+    // console.log('USER', user)
 
     return (
-        <Container className="justify-content-center">
-            <h3>{heading}</h3>
-            <Form onSubmit={handleSubmit}>
-                <Form.Control 
+        <div class="reviewform">
+        <form  onSubmit={handleSubmit}>
+            <h3 class="desc2">{heading}</h3>
+                <input
+                    class="review"
                     placeholder="Enter your review!"
                     value={review.review}
                     name='review'
                     onChange={handleChange}
                 />
-                <Form.Label>Rating</Form.Label>
-                <Form.Control 
+                <label>Rating</label>
+                <input
+                    class="review"
                     placeholder="Rate from 0-5"
                     value={review.rating}
                     name='rating'
                     onChange={handleChange}
                 />
-                <Button type='submit'>Submit</Button>
-            </Form>
-        </Container>
+                <button class="button-51" type='submit'>Submit</button>
+            </form>
+            </div>
     )
 }
 

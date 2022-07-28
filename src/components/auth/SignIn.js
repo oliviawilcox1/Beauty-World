@@ -44,7 +44,7 @@ const SignIn = (props) => {
 return (
     <div className='row'>
         <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-            <h3>LOG IN</h3>
+            <h3 class="login">LOG IN</h3>
        
             <form onSubmit={onSignIn}>
                     <input

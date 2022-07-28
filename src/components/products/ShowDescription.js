@@ -6,8 +6,8 @@ const ShowDescription = (props) => {
         <section id='content1' >
         <div>
         <p class='desc'>
-        {product.description}<br/>
-        {product.size}
+        {product.description}<br/></p>
+        <p class='desc2'>{product.size}
         </p>
       </div>
     </section>

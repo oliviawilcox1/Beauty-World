@@ -2,18 +2,27 @@ import React, { useState, useEffect } from 'react';
 
 const ShowIngredients = (props) => {
     const { user, product, triggerRefresh } = props;
+    const [ingredients, setIngredients] = useState(false)
+
+    const handleClick =()=> {
+        setIngredients(true)
+    }
+    const showLess =()=> {
+        setIngredients(false)
+    }
+
     return (
-        <div class="nopadding">
-        <h5>Ingredient Standouts </h5>
+    <div class="desc2">
+        <h4>Ingredient Standouts </h4>
         <p class='desc2'>{product. ingredienthighlights}.</p>
-        {/* <div>
-        <a href="" data-show-more>See Full List of Ingredients</a>
-        </div>  */}
-          <div>
-            <h4 > Full List of Ingredients</h4>
-            {/* <a href="" data-show-less>Show Less</a> */}
-            <p class="desc2">{product.ingredients}</p>
-          </div> 
-      </div>
+        <div>
+            <h4 class="desc3" onClick={handleClick}>See Full List of Ingredients </h4>
+            {ingredients && (
+                <p class="desc2">{product.ingredients}<br/>
+                <h5 class="desc3" onClick={showLess}>Show Less</h5></p>
+            )
+            }
+        </div> 
+    </div>
 )};
 export default ShowIngredients;

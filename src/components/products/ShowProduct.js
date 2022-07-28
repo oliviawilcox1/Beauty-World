@@ -7,19 +7,22 @@ import ShowReview from '../reviews/ShowReview'
 import CreateReviewModal from '../reviews/CreateReviewModal';
 import ShowDescription from './ShowDescription'
 import ShowIngredients from './ShowIngredients';
-
+import ShowInstructions from './Instructions';
+import ReviewForm from '../shared/ReviewForm';
+import { createReview } from '../../api/reviews.js'
 
 const ShowProduct = (props) => {
   const [product, setProduct] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [reviewModalOpen, setReviewModalOpen] = useState(false)
+  const [review, setReview] = useState(false)
   const [updated, setUpdated] = useState(false);
   const [hidden, setHidden] = useState(false)
   const [isShown, setIsShown] = useState(false);
-  const [description, setDescription] = useState(false);
-  // const [ingredients, setIngredients] = useState(unchecked);
+  const [description, setDescription] = useState(true);
+  const [ingredients, setIngredients] = useState(false);
   const [instructions, setInstructions] = useState(false);
-  const { user, msgAlert } = props;
+  const { user, msgAlert, triggerRefresh } = props;
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -34,8 +37,6 @@ const ShowProduct = (props) => {
       .catch(error => console.log(error))
   }, [updated]);
   
-
-
 const isFavorite = () => {
   let faveArray = []
     getAllFavorites()
@@ -54,9 +55,6 @@ const isFavorite = () => {
       })  
       .catch(error => console.log(error))
 }
-
-
-
 const removeTheProduct = () => {
   removeProduct(user, product._id)
     .then(() => {
@@ -64,9 +62,6 @@ const removeTheProduct = () => {
     })
     .catch(error => console.log(error))
 };
-
-
-
 const addFavorite = () => {
   const favorite = {
       owner: user._id,
@@ -81,14 +76,49 @@ const addFavorite = () => {
   }
 
 const handleDescription = event => {
-  setDescription(current => !current);
+  setDescription(true);
+  setIngredients(false);
+  setInstructions(false)
 };
   
-// const handleIngredients = event => {
-//   setIngredients(current => !current);
-// };
+const handleIngredients = event => {
+  setIngredients(true);
+  setDescription(false);
+  setInstructions(false)
+};
+const handleInstructions = event => {
+  setDescription(false);
+  setIngredients(false);
+  setInstructions(true)
+};
+const handleChange = (e) => {
+  e.persist()
+  addUsertoReview()
+  setReview(prevReview => {
+      const name = e.target.name
+      let value = e.target.value
+      if (e.target.type === 'number') {
+          value = parseInt(e.target.value)
+      }
+      const updatedValue = { [name]: value }
+      return {...prevReview, ...updatedValue}
+  })
+}
 
+const addUsertoReview = () => {
+  setReview(prevReview => {
+      const updatedValue = { "owner": user._id }
+      return {...prevReview, ...updatedValue}
+      }   
+  )
+}
 
+const handleSubmit = (e) => {
+  e.preventDefault()
+  createReview(user, product._id, review)
+      .then(() => triggerRefresh())
+      .catch(error => console.log(error))
+}
 
 let reviewCards = null;
 if (product) 
@@ -105,11 +135,9 @@ if (product)
   }
 }
 
-
 if (!product) {
   return <span>Loading...</span>;
 }
-
 
 try{
   const productOwnerId = product
@@ -141,13 +169,14 @@ try{
             handleClose={() => setModalOpen(false)}
           />
 
-          <CreateReviewModal
+          <ReviewForm 
             product={product}
-            show={reviewModalOpen}
             user={user}
-            msgAlert={msgAlert}
+            review={review}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            heading="Give the product a review!"
             triggerRefresh={() => setUpdated(prev => !prev)}
-            handleClose={() => setReviewModalOpen(false)}
           />
         </>
             )
@@ -157,12 +186,83 @@ try{
     console.log('ERROR:', error)
   }
 
-
+console.log('user', user)
 
 if(user) 
   {
     return (
-      <body> 
+      <> 
+  <div class="wrapper">
+    <div class='leftshow'>
+      <span>
+        {product.category} / {product.name}
+      </span>
+      <div>
+        <img src={`${product.image}`} alt=""  />
+      </div>
+    </div>
+
+  <div class="rightshow">
+    <div class="product-meta">
+      <h4 class="product-vendor">
+        <a class="brandname" href="/" >{product.brand}</a>
+      </h4>
+      <div class="review-stars">
+      </div>
+      <h5 class="product-name">{product.name}</h5>
+      
+      <span>${product.price}</span>
+    </div>
+  <div class='description'>
+    <label for="tab1">
+      <input id="tab1" type="radio" name='tabs' defaultChecked onClick={handleDescription}/>
+      Details
+    </label>
+
+    <label for="tab2">
+      <input id="tab2" type="radio" name='tabs' onClick={handleIngredients}/>
+      Ingredients
+    </label>
+
+    <label for="tab3">
+      <input id="tab3" type="radio" name='tabs'onClick={handleInstructions}/>
+      How to use
+    </label>
+  </div>
+
+  {description && (
+  <ShowDescription product={product} user ={user}/>
+  )} 
+
+  {ingredients && (
+    <ShowIngredients product={product} user={user}/>
+  )}
+
+{instructions && (
+    <ShowInstructions product={product} user={user}/>
+  )}
+
+  </div>
+</div>
+  
+  <div>
+    <button class="button-51" role="button" onClick={() => setReview(true)}>Leave A Review!</button>
+    {review && (
+      <ReviewForm 
+        product={product}
+        user={user}
+        review={review}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        heading="Give the product a review!"
+        triggerRefresh={() => setUpdated(prev => !prev)}
+      />
+
+)}
+
+
+    <p> {reviewCards}</p> 
+  </div>   
 
       
         <button style={{ borderRadius:'30px', display: hidden ? 'none' : 'block'}} onClick={() => addFavorite()}>Add to Favorites</button> 
@@ -179,16 +279,16 @@ if(user)
           updateProduct={updateProduct}
           handleClose={() => setModalOpen(false)}
         />
-
-        <CreateReviewModal
+        <ReviewForm 
           product={product}
-          show={reviewModalOpen}
           user={user}
-          msgAlert={msgAlert}
+          review={review}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          heading="Write Your Review!"
           triggerRefresh={() => setUpdated(prev => !prev)}
-          handleClose={() => setReviewModalOpen(false)}
-          />
-      </body>
+        />
+      </>
     )
 }
 
@@ -211,7 +311,7 @@ return (
   <div class="rightshow">
     <div class="product-meta">
       <h4 class="product-vendor">
-      <a  class="brandname" href="/" >{product.brand}</a>
+        <a class="brandname" href="/" >{product.brand}</a>
       </h4>
       <div class="review-stars">
       </div>
@@ -221,17 +321,17 @@ return (
     </div>
   <div class='description'>
     <label for="tab1">
-      <input id="tab1" type="radio" name='tabs' onClick={handleDescription}/>
+      <input id="tab1" type="radio" name='tabs' defaultChecked onClick={handleDescription}/>
       Details
     </label>
 
     <label for="tab2">
-      <input id="tab2" type="radio" name='tabs'  onClick={handleDescription} />
+      <input id="tab2" type="radio" name='tabs' onClick={handleIngredients}/>
       Ingredients
     </label>
 
     <label for="tab3">
-      <input id="tab3" type="radio" name='tabs'onClick={handleDescription}/>
+      <input id="tab3" type="radio" name='tabs'onClick={handleInstructions}/>
       How to use
     </label>
   </div>
@@ -240,14 +340,33 @@ return (
   <ShowDescription product={product} user ={user}/>
   )} 
 
-  {/* {ingredients === checked && (
+  {ingredients && (
     <ShowIngredients product={product} user={user}/>
-  )} */}
+  )}
+
+{instructions && (
+    <ShowInstructions product={product} user={user}/>
+  )}
+
   </div>
 </div>
   
   <div>
-    <button class="button-51" role="button" onClick={() => setReviewModalOpen(true)}>Leave A Review!</button>
+    <button class="button-51" role="button" onClick={() => setReview(true)}>Leave A Review!</button>
+    {review && (
+      <ReviewForm 
+        product={product}
+        user={user}
+        review={review}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        heading="Give the product a review!"
+        triggerRefresh={() => setUpdated(prev => !prev)}
+      />
+
+)}
+
+
     <p> {reviewCards}</p> 
   </div>   
 
@@ -262,14 +381,14 @@ updateProduct={updateProduct}
 handleClose={() => setModalOpen(false)}
 /> */}
 
-<CreateReviewModal
+{/* <CreateReviewModal
 product={product}
 show={reviewModalOpen}
 user={user}
 msgAlert={msgAlert}
 triggerRefresh={() => setUpdated(prev => !prev)}
 handleClose={() => setReviewModalOpen(false)}
-/>
+/> */}
 
 </> 
   );

@@ -31,8 +31,8 @@ const IndexProducts = (props) => {
     let productCards
     if (products.length > 0) {
         productCards = products.map(product => (
-            <div key = {product.id} style={linkStyle}>
-                <a href={`products/${product._id}`}  class = "links"> 
+            <div key={product.id} style={linkStyle}>
+                <a href={`products/${product._id}`}  user={user} class = "links"> 
                     <img src= {`${product.image}`}  class="imgthumbnail"/> <h5 id="brandname">{product.brand}</h5><span class="productname">{product.name}</span></a> 
             </div>
         ))
