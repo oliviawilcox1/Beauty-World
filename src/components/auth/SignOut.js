@@ -19,7 +19,7 @@ return (
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
                 <h2>Are you sure you want to sign out?</h2>
                 <small>We hate to see you go...</small><br/>
-                <button class="button-52" role="button" onClick={onSignOut}>
+                <button  onClick={onSignOut}>
                 Sign Out
                 </button>
             </div>

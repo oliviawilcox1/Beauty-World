@@ -15,6 +15,12 @@ import ShowProduct from './components/products/ShowProduct';
 import CreateProduct from './components/products/CreateProduct';
 import IndexFavorites from './components/favorites/IndexFavorites';
 import CreateReviewModal from './components/reviews/CreateReviewModal';
+import ShowSkincare from './components/filters/ShowSkincare';
+import ShowHaircare from './components/filters/ShowHaircare';
+import ShowFragrance from './components/filters/ShowFragrance';
+import ShowMakeup from './components/filters/ShowMakeup';
+import ShowBodycare from './components/filters/ShowBodycare';
+
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -50,9 +56,7 @@ const App = () => {
    
         <Route 
         path="/" element={
-
           <Home msgAlert={msgAlert} user={user} />
- 
         } 
         />
         <Route
@@ -86,11 +90,42 @@ const App = () => {
           }
         />
         <Route
+        path="/products/skincare"
+        element={
+        <ShowSkincare msgAlert={msgAlert} user={user} />
+        }
+        />
+        <Route
+        path="/products/haircare"
+        element={
+        <ShowHaircare msgAlert={msgAlert} user={user} />
+        }
+        />
+        <Route
+        path="/products/bodycare"
+        element={
+        <ShowBodycare msgAlert={msgAlert} user={user} />
+        }
+        /> 
+        <Route
+        path="/products/makeup"
+        element={
+        <ShowMakeup msgAlert={msgAlert} user={user} />
+        }
+        />
+        <Route
+        path="/products/fragrance"
+        element={
+        <ShowFragrance msgAlert={msgAlert} user={user} />
+        }
+        />
+
+        <Route
           path="/addProduct"
           element={
             <RequireAuth user={user}>
               <CreateProduct msgAlert={msgAlert} user={user} />
-            </RequireAuth>
+           </RequireAuth>
           }
         />
         <Route
@@ -113,7 +148,7 @@ const App = () => {
           path="/reviews/:id"
           element={
             <RequireAuth user={user}>
-              <CreateReviewModal msgAlert={msgAlert} user={user} />
+              <ShowProduct msgAlert={msgAlert} user={user} />
             </RequireAuth>
           }
         />

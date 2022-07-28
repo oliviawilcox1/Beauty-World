@@ -11,18 +11,18 @@ const ShowIngredients = (props) => {
         setIngredients(false)
     }
 
-    return (
-    <div class="desc2">
+return (
+    <div className="desc2">
         <h4>Ingredient Standouts </h4>
-        <p class='desc2'>{product. ingredienthighlights}.</p>
+        <p className='desc2'>{product. ingredienthighlights}.</p>
         <div>
-            <h4 class="desc3" onClick={handleClick}>See Full List of Ingredients </h4>
+            <h4 className="desc3" onClick={handleClick}>See Full List of Ingredients </h4>
             {ingredients && (
-                <p class="desc2">{product.ingredients}<br/>
-                <h5 class="desc3" onClick={showLess}>Show Less</h5></p>
-            )
-            }
+                <p className="desc2"> {product.ingredients} <br/>
+                <h5 className="desc3" onClick={showLess}> Show Less</h5> </p>
+            )}
         </div> 
     </div>
 )};
+
 export default ShowIngredients;

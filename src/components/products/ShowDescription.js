@@ -3,13 +3,10 @@ import React, { useState, useEffect } from 'react';
 const ShowDescription = (props) => {
     const { user, product, triggerRefresh } = props;
     return (
-        <section id='content1' >
-        <div>
-        <p class='desc'>
-        {product.description}<br/></p>
-        <p class='desc2'>{product.size}
-        </p>
+      <div className="desc2">
+        <h4>Description </h4>
+        <p className='desc'> {product.description}<br/></p>
+        <p className='desc2'>{product.size}</p>
       </div>
-    </section>
 )};
 export default ShowDescription;

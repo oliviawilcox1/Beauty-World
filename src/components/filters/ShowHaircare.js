@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-const ShowInstructions = (props) => {
+const ShowHaircare = (props) => {
     const { user, product, triggerRefresh } = props;
     return (
-        <div>
-            
-        </div>
+       <>
+       {product}
+       </>
 )};
-export default ShowInstructions;
+export default ShowHaircare;

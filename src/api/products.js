@@ -43,3 +43,28 @@ export const removeProduct = (user, productId) => {
         }
     })
 }
+
+export const getAllSkincare = () => {
+    return axios(`${apiUrl}/products/skincare`)
+}
+export const getAllHaircare = () => {
+    return axios(`${apiUrl}/products/haircare`)
+}
+
+export const getAllBodycare = () => {
+    return axios(`${apiUrl}/products/bodycare`)
+}
+
+export const getAllMakeup = () => {
+    return axios(`${apiUrl}/products/makeup`)
+}
+
+export const getAllFragrance = () => {
+    return axios(`${apiUrl}/products/fragrance`)
+}
+
+export const getAllKBeauty = () => {
+    return axios(`${apiUrl}/products/kbeauty`)
+}
+
+

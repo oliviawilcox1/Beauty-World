@@ -7,19 +7,18 @@ const ReviewForm = (props) => {
     // console.log('USER', user)
 
     return (
-        <div class="reviewform">
-        <form  onSubmit={handleSubmit}>
-            <h3 class="desc2">{heading}</h3>
+        <div className="reviewform">
+        <form className="form" onSubmit={handleSubmit}>
+            <h4>{heading}</h4>
                 <input
-                    class="review"
+                    className='review1'
                     placeholder="Enter your review!"
                     value={review.review}
                     name='review'
                     onChange={handleChange}
                 />
-                <label>Rating</label>
                 <input
-                    class="review"
+                 className='review1'
                     placeholder="Rate from 0-5"
                     value={review.rating}
                     name='rating'

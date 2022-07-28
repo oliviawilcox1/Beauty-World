@@ -6,6 +6,9 @@ export const createReview = (user, productId, newReview) => {
   return axios({
     url: `${apiUrl}/reviews/${productId}`,
     method: 'POST',
+    headers: {
+      Authorization: `Token token=${user.token}`,
+    },
     data: { review: newReview },
   });
 };

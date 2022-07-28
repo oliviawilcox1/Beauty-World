@@ -37,25 +37,25 @@ const CreateReviewModal = (props) => {
     }
 
 return (
-    // <Modal show={show} onHide={handleClose}>
-    //     <Modal.Header closeButton></Modal.Header>
-    //     <Modal.Body>
-    //         <ReviewForm
-    //             review={review}
-    //             handleChange={handleChange}
-    //             handleSubmit={handleSubmit}
-    //             heading="Give the product a review!"
-    //         />
-    //     </Modal.Body>
-    // </Modal>
-      
-       
+    <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton></Modal.Header>
+        <Modal.Body>
             <ReviewForm
                 review={review}
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
                 heading="Give the product a review!"
             />
+        </Modal.Body>
+    </Modal>
+      
+       
+            // <ReviewForm
+            //     review={review}
+            //     handleChange={handleChange}
+            //     handleSubmit={handleSubmit}
+            //     heading="Give the product a review!"
+            // />
 
 )
 }

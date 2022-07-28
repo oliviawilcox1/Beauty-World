@@ -33,7 +33,8 @@ const SignIn = (props) => {
 		const { msgAlert, setUser } = props
         const credentials = {email, password}
 		signIn(credentials)
-			.then((res) => setUser(res.data.user))
+			.then((res) => 
+            setUser(res.data.user))
 			.then(() => navigate('/'))
 			.catch((error) => {
                 setEmail('')
@@ -44,11 +45,11 @@ const SignIn = (props) => {
 return (
     <div className='row'>
         <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-            <h3 class="login">LOG IN</h3>
+            <h3 className="login">LOG IN</h3>
        
             <form onSubmit={onSignIn}>
                     <input
-                        class="signin"
+                        className="signin"
                         required
                         type='email'
                         name='email'
@@ -57,7 +58,7 @@ return (
                         onChange={e => setEmail(e.target.value)}
                     />
                     <input
-                     class="signin"
+                     className="signin"
                         required
                         name='password'
                         value={password}
@@ -65,15 +66,15 @@ return (
                         placeholder='Password'
                         onChange={e => setPassword(e.target.value)}
                     />
-                <button class="button-51" role="button" type='submit'>
+                <button className="button-51" type='submit'>
                     SIGN IN
                 </button>
                
             </form>
             
            <span>
-            <a class="a" href="/sign-up">
-                <button class="button-52" role="button" type='submit'>
+            <a className="a" href="/sign-up">
+                <button className="button-52" type='submit'>
                    CREATE AN ACCOUNT
                 </button>
             </a>

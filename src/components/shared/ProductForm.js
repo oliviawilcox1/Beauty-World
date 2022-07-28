@@ -5,54 +5,101 @@ const ProductForm = (props) => {
   const { product, handleChange, handleSubmit, heading } = props;
 
   return (
-    <Container className="justify-content-center">
-      <h3>{heading}</h3>
-      <Form onSubmit={handleSubmit}>
-        <Form.Label>Name</Form.Label>
-        <Form.Control
-          placeholder="name?"
+    <div className='row'>
+    <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+      <h4>{heading}</h4>
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="Name"
           value={product.name}
           name="name"
           onChange={handleChange}
         />
-        <Form.Label>Image</Form.Label>
-        <Form.Control
-          placeholder="img url?"
-          value={product.image}
-          name="image"
+
+        <input
+          
+          placeholder="Brand"
+          value={product.brand}
+          name="brand"
           onChange={handleChange}
         />
-        <Form.Label>Description</Form.Label>
-        <Form.Control
-          placeholder="description?"
+
+        <input
+          placeholder="Description"
           value={product.description}
           name="description"
           onChange={handleChange}
         />
-        <Form.Label>Price</Form.Label>
-        <Form.Control
-          placeholder="price?"
+    
+        <input
+          placeholder="Price"
           value={product.price}
           type="number"
           name="price"
           onChange={handleChange}
         />
-        <Form.Check
-          label="is this product available?"
-          name="available"
-          defaultChecked={product.available}
+
+        <input
+          type="checkbox"
+          placeholder="KBeauty?"
+          name="kbeauty"
+          value="kbeauty"
+          defaultChecked={product.kbeauty}
           onChange={handleChange}
         />
-        <Form.Label>Category</Form.Label>
-        <Form.Control
-          placeholder="category?"
+  
+        <input
+          placeholder="Category"
           value={product.category}
           name="category"
           onChange={handleChange}
         />
-        <Button type="submit">Submit</Button>
-      </Form>
-    </Container>
+        
+        <input
+          placeholder="Size"
+          value={product.size}
+          name="category"
+          onChange={handleChange}
+        />
+
+        <input
+          placeholder="Where to buy"
+          value={product.wheretobuy}
+          name="category"
+          onChange={handleChange}
+        />
+
+          <input
+          placeholder="Ingredients"
+          value={product.ingredients}
+          name="category"
+          onChange={handleChange}
+        />
+          <input
+          placeholder="Ingredient Highlights"
+          value={product.ingredienthighlights}
+          name="ingredienthighlights"
+          onChange={handleChange}
+        />
+          <input
+          placeholder="Target"
+          value={product.target}
+          name="target"
+          onChange={handleChange}
+        />
+          <input
+          placeholder="Instructions"
+          value={product.instructions}
+          name="category"
+          onChange={handleChange}
+        />
+
+
+
+        <button className="button-51" type="submit">Submit</button>
+      </form>
+    </div>
+    </div>
   );
 };
 
