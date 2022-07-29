@@ -123,7 +123,7 @@ const IndexProducts = (props) => {
                     <a className="links" href="/products/bodycare"><span>Serum </span></a><br/>
                     <a className="links" href="/products/bodycare"><span>Moisturizer </span></a><br/>
                     <a className="links" href="/products/bodycare"><span>Sunscreen </span></a><br/>
-                    <a className= "links" href="/products/kbeauty"> <span> Best of K-Beauty </span></a>
+                    <a className= "links" href="/products/kbeauty"> <span> Best of K-Beauty </span></a><br/>
 
                     <a className="links" href="/products/bodycare"><span>Body Wash </span></a><br/>
                     <a className="links" href="/products/bodycare"><span>Bath Products </span></a><br/>
