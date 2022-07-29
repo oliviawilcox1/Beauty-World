@@ -19,17 +19,21 @@ const ShowSkincare = (props) => {
         <div className="container">
             <h2 className="filter">All Skincare</h2>
         </div>
-        <div className="together">
-             <h4 className='button-51'> Cleanser </h4>
-             <h4 className='button-51'> Toner/Essence </h4>
-             <h4 className='button-51'> Serums </h4>
-             <h4 className='button-51'> Moisturizers </h4>
-             <h4 className='button-51'> Treatments </h4>
-             <a href="/products/kbeauty"> <h4 className='button-51'> K-Beauty </h4></a>
-         </div>
-         <div className="index">
-           <h2 style={{ margin: "100px"}}>We are working on getting you some great recommendations! </h2>
+
+        <div className='wrap'>
+            <div className='stack'>
+                <h3 className='filterby'>Filter By</h3>
+                <a className="links" href="/"> <span> Cleanser </span> </a><br/>
+                <a className="links" href="/"> <span> Toner/Essence </span> </a><br/>
+                <a className="links" href="/"><span> Serums </span> </a><br/>
+                <a className="links" href="/"> <span> Moisturizers </span> </a><br/>
+                <a className="links" href="/"> <span> Sunscreen </span> </a><br/>
             </div>
+
+            <div className="index">
+                <h2 style={{ margin: "100px"}}>We are working on getting you some great recommendations! </h2>
+            </div>
+        </div>
         </>
     }
 
@@ -49,15 +53,22 @@ const ShowSkincare = (props) => {
         <div className="container">
             <h2 className="filter">All Skincare</h2>
         </div>
-       <div className="together">
-            <h4 className='button-51'> Cleanser </h4>
-            <h4 className='button-51'> Toner/Essence </h4>
-            <h4 className='button-51'> Serums </h4>
-            <h4 className='button-51'> Moisturizers </h4>
-            <h4 className='button-51'> Treatments </h4>
-        </div>
-       <div className="index">
-            {skincareCards}
+
+        <div className='wrap'>
+            <div className='stack'>
+                <h3 className='filterby'>Filter By</h3>
+                <a className="links" href="/"> <span> Cleanser </span> </a><br/>
+                <a className="links" href="/"> <span> Toner/Essence </span> </a><br/>
+                <a className="links" href="/"><span> Serums </span> </a><br/>
+                <a className="links" href="/"> <span> Moisturizers </span> </a><br/>
+                <a className="links" href="/"> <span> Sunscreen </span> </a><br/>
+            </div>
+        
+                <div className="cards">
+                    <div className='index'>
+                        {skincareCards}
+                </div>
+            </div>
        </div>
        </>
 )};

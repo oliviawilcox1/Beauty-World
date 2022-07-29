@@ -21,14 +21,20 @@ const ShowFragrance = (props) => {
             <div className="container">
                 <h2 className="filter">All Fragrances</h2>
             </div>
-            <div className="together">
-                <h4 className='button-51'> Clean </h4>
-                <h4 className='button-51'> Floral </h4>
-                <h4 className='button-51'> Fruity </h4>
-                <h4 className='button-51'> Warm and Woody </h4>
+
+          <div className='wrap'>
+            <div className='stack'>
+                <h3 className='filterby'>Filter By</h3>
+                <a className="links" href="/"> <span> Clean </span> </a><br/>
+                <a className="links" href="/"> <span> Floral </span> </a><br/>
+                <a className="links" href="/"><span> Fruity </span> </a><br/>
+                <a className="links" href="/"> <span> Warm </span> </a><br/>
+                <a className="links" href="/"> <span> Woody </span> </a><br/>
             </div>
-            <div className="index">
-           <h2 style={{ margin: "100px"}}>We are working on getting you some great recommendations! </h2>
+
+                <div className="index">
+                    <h2 >We are working on getting you some great recommendations! </h2>
+                </div>
             </div>
            </>
         }
@@ -50,14 +56,22 @@ const ShowFragrance = (props) => {
         <div className="container">
             <h2 className="filter">All Fragrances</h2>
         </div>
-        <div className="together">
-            <h4 className='button-51'> Clean </h4>
-            <h4 className='button-51'> Floral </h4>
-            <h4 className='button-51'> Fruity </h4>
-            <h4 className='button-51'> Warm and Woody </h4>
-        </div>
-        <div className="index">
-        {fragranceCards}
+
+        <div className='wrap'>
+            <div className='stack'>
+                <h3 className='filterby'>Filter By</h3>
+                <a className="links" href="/"> <span> Clean </span> </a><br/>
+                <a className="links" href="/"> <span> Floral </span> </a><br/>
+                <a className="links" href="/"><span> Fruity </span> </a><br/>
+                <a className="links" href="/"> <span> Warm </span> </a><br/>
+                <a className="links" href="/"> <span> Woody </span> </a><br/>
+            </div>
+            
+            <div className='cards'>
+                <div className="index">
+                {fragranceCards}
+                </div>
+            </div>
         </div>
        </>
 )};

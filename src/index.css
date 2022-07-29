@@ -506,3 +506,34 @@ text-align: center;
   color: black;
   width: 700%;
 }
+
+.wrap{
+  display: flex;
+  padding: 1em;
+  margin: 5%;
+
+}
+.stack{
+  width: 20%;
+  font-weight: 300;
+  align-self: flex-start;
+
+  /* border: 1px solid #000000; */
+}
+
+/* .stack:first-child{
+  margin-right: 20px;
+} */
+
+.cards{
+  width: 100%;
+  margin: 0;
+  position: relative;
+}
+.filterby{
+  font-weight: 500;
+  font-size: 125%;
+  margin-bottom: 5%;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #000000;
+}

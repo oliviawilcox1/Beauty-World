@@ -20,15 +20,20 @@ const ShowMakeup = (props) => {
             <div className="container">
                 <h2 className="filter">All Makeup </h2>
             </div>
-            <div className="together">
-                <h4 className='button-51'> Eye Products </h4>
-                <h4 className='button-51'> Face Products </h4>
-                <h4 className='button-51'> Cheek Products</h4>
-                <h4 className='button-51'> Lip Products </h4>
+            <div className="wrap">
+                <div className="stack">
+                <h3 className='filterby'>Filter By</h3>
+                <span > Eye Products </span><br/>
+                <span> Face Products </span><br/>
+                <span > Cheek Products</span><br/>
+                <span> Lip Products </span><br/>
             </div>
-            <div className="index">
+
+        <div className="index">
            <h2 style={{ margin: "100px"}}>We are working on getting you some great recommendations! </h2>
-            </div>
+      
+        </div>
+        </div>
            </>
         }
 
@@ -49,14 +54,21 @@ const ShowMakeup = (props) => {
        <div className="container">
             <h2 className="filter">All Makeup </h2>
         </div>
-        <div className="together">
-            <h4 className='button-51'> Eye Products </h4>
-            <h4 className='button-51'> Face Products </h4>
-            <h4 className='button-51'> Cheek Products</h4>
-            <h4 className='button-51'> Lip Products </h4>
-        </div>
+
+        <div className="wrap">
+                <div className="stack">
+                <h3 className='filterby'>Filter By</h3>
+                <span > Eye Products </span><br/>
+                <span> Face Products </span><br/>
+                <span > Cheek Products </span><br/>
+                <span> Lip Products </span><br/>
+            </div>
+
+<div className='cards'>
         <div className="index">
-        {makeupCards}
+            {makeupCards}
+        </div>
+        </div>
         </div>
        </>
 )};

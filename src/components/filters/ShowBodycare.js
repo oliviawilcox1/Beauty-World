@@ -19,7 +19,7 @@ const ShowBodycare = (props) => {
         } else if (bodycare.length === 0) {
             return <>
             <div className="container">
-                <h2 className="filter">All Skincare</h2>
+                <h2 className="filter">All Bodycare</h2>
             </div>
             <div className="together">
                 <h4 className='button-51'> Body Wash </h4>
@@ -28,8 +28,9 @@ const ShowBodycare = (props) => {
                 <h4 className='button-51'> Body Lotion </h4>
                 <h4 className='button-51'> Body Oils </h4>
             </div>
+
             <div className="index">
-           <h2 style={{ margin: "100px"}}>We are working on getting you some great recommendations! </h2>
+           <h2> We are working on getting you some great recommendations! </h2>
             </div>
            </>
         }
@@ -49,7 +50,7 @@ const ShowBodycare = (props) => {
     return (
        <>
         <div className="container">
-            <h2 className="filter">All Skincare</h2>
+            <h2 className="filter">All Bodycare</h2>
         </div>
         <div className="together">
             <h4 className='button-51'> Shampoo </h4>

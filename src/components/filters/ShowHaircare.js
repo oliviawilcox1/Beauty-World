@@ -20,15 +20,18 @@ const ShowHaircare = (props) => {
             <div className="container">
                 <h2 className="filter">All Haircare</h2>
             </div>
-            <div className="together">
-                <h4 className='button-51'> Shampoo </h4>
-                <h4 className='button-51'> Conditioner </h4>
-                <h4 className='button-51'> Products </h4>
-                <h4 className='button-51'> Heat Protectant </h4>
-                <h4 className='button-51'> Treatments </h4>
-            </div>
-            <div className="index">
-           <h2 style={{ margin: "100px"}}>We are working on getting you some great recommendations! </h2>
+            <div className='wrap'>
+                <div className="stack">
+                    <h3 className='filterby'>Filter By</h3>
+                    <a className="links" href="/"><span> Shampoo </span></a><br/>
+                    <a className="links" href="/"><span> Conditioner </span></a><br/>
+                    <a className="links" href="/"><span> Leave-In Products </span></a><br/>
+                    <a className="links" href="/"><span> Masks </span></a><br/>
+                </div>
+
+                <div className="index">
+                    <h2 style={{ margin: "100px"}}>We are working on getting you some great recommendations! </h2>
+                </div>
             </div>
            </>
         }
@@ -50,15 +53,21 @@ const ShowHaircare = (props) => {
         <div className="container">
             <h2 className="filter">All Haircare</h2>
         </div>
-        <div className="together">
-            <h4 className='button-51'> Shampoo </h4>
-            <h4 className='button-51'> Conditioner </h4>
-            <h4 className='button-51'> Products </h4>
-            <h4 className='button-51'> Heat Protectant </h4>
-            <h4 className='button-51'> Treatments </h4>
-        </div>
-        <div className="index">
-        {haircareCards}
+
+        <div className='wrap'>
+            <div className="stack">
+                <h3 className='filterby'>Filter By</h3>
+                <a className="links" href="/"><span> Shampoo </span></a><br/>
+                <a className="links" href="/"><span> Conditioner </span></a><br/>
+                <a className="links" href="/"><span> Leave-In Products </span></a><br/>
+                <a className="links" href="/"><span> Masks </span></a><br/>
+            </div>
+
+            <div className='cards'>
+                <div className="index">
+                    {haircareCards}
+                </div>
+            </div>
         </div>
        </>
 )};
