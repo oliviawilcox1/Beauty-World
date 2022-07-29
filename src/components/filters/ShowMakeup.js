@@ -20,19 +20,19 @@ const ShowMakeup = (props) => {
             <div className="container">
                 <h2 className="filter">All Makeup </h2>
             </div>
+
             <div className="wrap">
                 <div className="stack">
-                <h3 className='filterby'>Filter By</h3>
-                <span > Eye Products </span><br/>
-                <span> Face Products </span><br/>
-                <span > Cheek Products</span><br/>
-                <span> Lip Products </span><br/>
-            </div>
+                    <h3 className='filterby'>Filter By</h3>
+                        <span> Eye Products </span><br/>
+                        <span> Face Products </span><br/>
+                        <span> Cheek Products</span><br/>
+                        <span> Lip Products </span><br/>
+                </div>
 
-        <div className="index">
-           <h2 style={{ margin: "100px"}}>We are working on getting you some great recommendations! </h2>
-      
-        </div>
+            <div className="index">
+            <h2>We are working on getting you some great recommendations! </h2>
+            </div>
         </div>
            </>
         }
@@ -56,19 +56,19 @@ const ShowMakeup = (props) => {
         </div>
 
         <div className="wrap">
-                <div className="stack">
+            <div className="stack">
                 <h3 className='filterby'>Filter By</h3>
-                <span > Eye Products </span><br/>
-                <span> Face Products </span><br/>
-                <span > Cheek Products </span><br/>
-                <span> Lip Products </span><br/>
+                    <span > Eye Products </span><br/>
+                    <span> Face Products </span><br/>
+                    <span > Cheek Products </span><br/>
+                    <span> Lip Products </span><br/>
             </div>
 
-<div className='cards'>
-        <div className="index">
-            {makeupCards}
-        </div>
-        </div>
+            <div className='cards'>
+                <div className="index">
+                    {makeupCards}
+                </div>
+            </div>
         </div>
        </>
 )};

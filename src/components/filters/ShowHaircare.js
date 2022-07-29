@@ -30,7 +30,7 @@ const ShowHaircare = (props) => {
                 </div>
 
                 <div className="index">
-                    <h2 style={{ margin: "100px"}}>We are working on getting you some great recommendations! </h2>
+                    <h2>We are working on getting you some great recommendations! </h2>
                 </div>
             </div>
            </>
