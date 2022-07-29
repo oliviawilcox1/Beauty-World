@@ -7,7 +7,6 @@ const ShowUnderTwenty = (props) => {
     useEffect(()=> {
         getAllUnderTwenty()
             .then(res => {
-                console.log('this is the res', res)
                 setPrice(res.data.price)
             })
             .catch(error => console.log(error))
@@ -16,10 +15,22 @@ const ShowUnderTwenty = (props) => {
         return   <>
         <div className="container">
             <h2 className="filter">All Items Under $20 </h2>
+       </div>
+
+       <div className='wrap'>
+        <div className='stack'>
+            <h3 className='filterby'>Filter By</h3>
+                <a className="links" href="/"> <span> Bodycare </span> </a><br/>
+                <a className="links" href="/"> <span> Fragrance </span> </a><br/>
+                <a className="links" href="/"><span> Haircare </span> </a><br/>
+                <a className="links" href="/"> <span> Makeup </span> </a><br/>
+                <a className="links" href="/"> <span> Skincare </span> </a><br/>
         </div>
+
          <div className="index">
-           <h2 style={{ margin: "100px"}}>We are working on getting you some great recommendations! </h2>
+           <h2>We are working on getting you some great recommendations! </h2>
             </div>
+        </div>
         </>
     }
 
@@ -39,16 +50,23 @@ const ShowUnderTwenty = (props) => {
        <div className="container">
             <h2 className="filter">All Items Under $20 </h2>
        </div>
-       <div className="together">
-            <h4 className='button-51'> Bodycare </h4>
-            <h4 className='button-51'> Fragrance </h4>
-            <h4 className='button-51'> Haircare </h4>
-            <h4 className='button-51'> Makeup </h4>
-            <h4 className='button-51'> Skincare </h4>
-        </div>
-       <div className="index">
-       {priceCards}
+     
+       <div className='wrap'>
+            <div className='stack'>
+                <h3 className='filterby'>Filter By</h3>
+                    <a className="links" href="/"> <span> Bodycare </span> </a><br/>
+                    <a className="links" href="/"> <span> Fragrance </span> </a><br/>
+                    <a className="links" href="/"><span> Haircare </span> </a><br/>
+                    <a className="links" href="/"> <span> Makeup </span> </a><br/>
+                    <a className="links" href="/"> <span> Skincare </span> </a><br/>
+            </div>
+
+            <div className='cards'>
+                <div className="index">
+                {priceCards}
+                </div>
+            </div>
        </div>
-       </>
+    </>
 )};
 export default ShowUnderTwenty;

@@ -103,15 +103,10 @@ const IndexProducts = (props) => {
             <h2 className="filter">Top 2022 Beauty Picks</h2>
         </div>
 
-        <div className="together">
-            <a className= "links" href="/products/price"><h4 className='button-51'> Newly Added </h4></a>
-            <a className= "links" href="/products/fragrance"> <h4 className='button-51'> Heavenly Scents </h4></a>
-            <a className= "links" href="/products/price"><h4 className='button-51'> Under $20 </h4></a>
-            <a className= "links" href="/products/kbeauty"> <h4 className='button-51'> Best of K-Beauty </h4></a>
-        </div>
-
         <div className='wrap'>
             <div className='stack'>
+            <a className="links" href="/products/bodycare"><h3 className='filterby'>Newly Added </h3></a>
+            <a className= "links" href="/products/price"><h3 className='filterby'>Under $20 </h3></a>
                 <h3 className='filterby'>Filter By</h3>
                 <a className="links" href="/products/bodycare"><span>Bodycare</span></a><br/>
                 <a className="links" href="/products/fragrance"><span>Fragrance</span></a><br/>
@@ -128,6 +123,7 @@ const IndexProducts = (props) => {
                     <a className="links" href="/products/bodycare"><span>Serum </span></a><br/>
                     <a className="links" href="/products/bodycare"><span>Moisturizer </span></a><br/>
                     <a className="links" href="/products/bodycare"><span>Sunscreen </span></a><br/>
+                    <a className= "links" href="/products/kbeauty"> <span> Best of K-Beauty </span></a>
 
                     <a className="links" href="/products/bodycare"><span>Body Wash </span></a><br/>
                     <a className="links" href="/products/bodycare"><span>Bath Products </span></a><br/>
@@ -144,6 +140,10 @@ const IndexProducts = (props) => {
                     <a className="links" href="/products/bodycare"><span>Face Products</span></a><br/>
                     <a className="links" href="/products/bodycare"><span>Cheek Products</span></a><br/>
                     <a className="links" href="/products/bodycare"><span>Lip Products</span></a><br/>
+
+
+                 
+
             </div>
 
             <div className='cards'>
