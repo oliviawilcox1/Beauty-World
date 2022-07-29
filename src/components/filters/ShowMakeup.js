@@ -24,16 +24,16 @@ const ShowMakeup = (props) => {
             <div className="wrap">
                 <div className="stack">
                     <h3 className='filterby'>Filter By</h3>
-                        <span> Eye Products </span><br/>
-                        <span> Face Products </span><br/>
-                        <span> Cheek Products</span><br/>
-                        <span> Lip Products </span><br/>
+                    <a className="links" href="/"> <span> Eye Products </span> </a><br/>
+                    <a className="links" href="/"> <span> Face Products </span> </a><br/> 
+                    <a className="links" href="/"> <span> Cheek Products </span> </a><br/>
+                    <a className="links" href="/"> <span> Lip Products </span> </a><br/>
                 </div>
 
-            <div className="index">
-            <h2>We are working on getting you some great recommendations! </h2>
+                <div className="index">
+                    <h2>We are working on getting you some great recommendations! </h2>
+                </div>
             </div>
-        </div>
            </>
         }
 
@@ -58,10 +58,10 @@ const ShowMakeup = (props) => {
         <div className="wrap">
             <div className="stack">
                 <h3 className='filterby'>Filter By</h3>
-                    <span > Eye Products </span><br/>
-                    <span> Face Products </span><br/>
-                    <span > Cheek Products </span><br/>
-                    <span> Lip Products </span><br/>
+                    <a className="links" href="/"> <span> Eye Products </span> </a><br/>
+                    <a className="links" href="/"> <span> Face Products </span> </a><br/> 
+                    <a className="links" href="/"> <span> Cheek Products </span> </a><br/>
+                    <a className="links" href="/"> <span> Lip Products </span> </a><br/>
             </div>
 
             <div className='cards'>
