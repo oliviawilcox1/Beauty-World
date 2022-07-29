@@ -86,11 +86,20 @@ const IndexProducts = (props) => {
         ))
     }
 
+    let brand
+    if (products.length > 0) {
+        brand = products.map(name => (
+            <div key={name.id} style={linkStyle}>
+                <a href={`products/${name._id}`}  user={user} className = "links"> 
+                    <span>{name.brand}</span></a> 
+            </div>
+        ))
+    }
+
     return(
         <>
         
         <div className="container">
-       
             <h2 className="filter">Top 2022 Beauty Picks</h2>
         </div>
 
@@ -100,9 +109,49 @@ const IndexProducts = (props) => {
             <a className= "links" href="/products/price"><h4 className='button-51'> Under $20 </h4></a>
             <a className= "links" href="/products/kbeauty"> <h4 className='button-51'> Best of K-Beauty </h4></a>
         </div>
-            <div className="index">
-                {productCards}
+
+        <div className='wrap'>
+            <div className='stack'>
+                <h3 className='filterby'>Filter By</h3>
+                <a className="links" href="/products/bodycare"><span>Bodycare</span></a><br/>
+                <a className="links" href="/products/fragrance"><span>Fragrance</span></a><br/>
+                <a className="links" href="/products/haircare"><span>Haircare</span></a><br/>
+                <a className="links" href="/products/makeup"><span>Makeup</span></a><br/>
+                <a className="links" href="/products/skincare"><span>Skincare</span></a><br/>
+
+                <h3 className='filterby'>Shop by Brand</h3>
+                    {brand}
+
+                <h3 className='filterby'>Shop by Product Type</h3>
+                    <a className="links" href="/products/bodycare"><span>Cleanser </span></a><br/>
+                    <a className="links" href="/products/bodycare"><span>Toner/Essence </span></a><br/>
+                    <a className="links" href="/products/bodycare"><span>Serum </span></a><br/>
+                    <a className="links" href="/products/bodycare"><span>Moisturizer </span></a><br/>
+                    <a className="links" href="/products/bodycare"><span>Sunscreen </span></a><br/>
+
+                    <a className="links" href="/products/bodycare"><span>Body Wash </span></a><br/>
+                    <a className="links" href="/products/bodycare"><span>Bath Products </span></a><br/>
+                    <a className="links" href="/products/bodycare"><span>Body Exfoliants</span></a><br/>
+                    <a className="links" href="/products/bodycare"><span>Body Lotion</span></a><br/>
+                    <a className="links" href="/products/bodycare"><span>Body Oils</span></a><br/>
+
+                    <a className="links" href="/products/bodycare"><span>Shampoo</span></a><br/>
+                    <a className="links" href="/products/bodycare"><span>Conditioner</span></a><br/>
+                    <a className="links" href="/products/bodycare"><span>Leave-In Products</span></a><br/>
+                    <a className="links" href="/products/bodycare"><span>Masks</span></a><br/>
+
+                    <a className="links" href="/products/bodycare"><span>Eye Products</span></a><br/>
+                    <a className="links" href="/products/bodycare"><span>Face Products</span></a><br/>
+                    <a className="links" href="/products/bodycare"><span>Cheek Products</span></a><br/>
+                    <a className="links" href="/products/bodycare"><span>Lip Products</span></a><br/>
             </div>
+
+            <div className='cards'>
+                <div className="index">
+                {productCards}
+                </div>
+            </div>
+        </div>
         </>
     )
 }

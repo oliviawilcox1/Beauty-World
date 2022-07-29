@@ -61,7 +61,7 @@ const ShowBodycare = (props) => {
                     <h3 className='filterby'>Filter By</h3>
                     <a className="links" href="/"> <span> Body Wash </span> </a><br/>
                     <a className="links" href="/"> <span> Bath Products </span> </a><br/>
-                    <a className="links" href="/"> <span> Exfoliants </span> </a><br/>
+                    <a className="links" href="/"> <span> Body Exfoliants </span> </a><br/>
                     <a className="links" href="/"> <span> Body Lotion </span> </a><br/>
                     <a className="links" href="/"> <span> Body Oils </span> </a><br/>
                 </div>
