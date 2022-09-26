@@ -1,4 +1,4 @@
-# Title : Winter Spaceship
+# Title : Beauty World
 
 1. The website will open that shows our Blog title with an index of all of our product recommendations. 
 
